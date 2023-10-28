@@ -1,11 +1,12 @@
 import ProductCard from "./ProductCard";
-import { products } from "../ProductsApi";
 import Slider from "./Slider";
 import CategoriesBar from "./CategoriesBar";
 import Footer from "./Footer";
 import ProductSlider from "./ProductSlider";
 
 function Products() {
+
+
   return (
     <>
       {/* width container */}

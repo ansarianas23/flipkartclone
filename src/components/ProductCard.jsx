@@ -4,7 +4,7 @@ function ProductCard({title, desc, price, mrp, id, imageUrl}) {
 
   return (
     // <Link to={`productdetails/:${id}`}>
-    <Link to={`/productdetails/:${id}`}>
+    <Link to={`/productdetails/${id}`}>
       <div className='border-[1px] rounded-sm w-[200px] h-[250px] flex flex-col justify-between items-center cursor-pointer py-2'>
         <div className='w-[80%] h-auto rounded-md overflow-hidden hover:scale-105'>
           <img className='w-full h-auto' src={imageUrl} alt="" />

@@ -8,7 +8,7 @@ function Slider() {
         autoPlay={true}
         infiniteLoop={true}
         showArrows={true}
-        showIndicators={false}
+        showIndicators={true}
         showThumbs={false}
         interval={3000}
       >
@@ -37,6 +37,13 @@ function Slider() {
           <img
             loading="lazy"
             src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/1e05c74a01f71a51.jpg?q=20"
+            alt="bannerImg"/>
+        </div>
+
+        <div>
+          <img
+            loading="lazy"
+            src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/eceea0652b4a0227.jpeg?q=20"
             alt="bannerImg"/>
         </div>
       </Carousel>
