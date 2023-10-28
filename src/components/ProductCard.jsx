@@ -1,6 +1,3 @@
-import cameraImg from '../assets/camera.jpg'
-import { useDispatch, useSelector } from 'react-redux'
-import { addTocart } from '../features/cartSlice'
 import { Link } from 'react-router-dom'
 
 function ProductCard({title, desc, price, mrp, id, imageUrl}) {

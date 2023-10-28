@@ -1,4 +1,5 @@
 
+
 function CategoriesBar() {
 
   const categories = [
