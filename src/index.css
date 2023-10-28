@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+    /* font-family: 'Roboto' sans-serif; */
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(238, 236, 234);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    select {
+        appearance: none !important;
+    }
+}
