@@ -15,6 +15,8 @@ function App() {
       }else{
         dispatch(logout())
       }
+    }).catch((error)=>{
+      console.log(error)
     })
   })
 
