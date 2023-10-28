@@ -70,6 +70,8 @@ function Navbar() {
 
         {/* Right part */}
         <div className="flex justify-center items-center space-x-10 text-black">
+          
+          {/* Become a seller */}
           <div className="min-w-fit space-x-2 ml-20 hidden md:flex cursor-pointer">
             <img
               className="w-fit"
@@ -80,24 +82,13 @@ function Navbar() {
           </div>
 
           {/* login button */}
-          <Link to="/login">
-          <div
-            onMouseEnter={() => {
-              toggleDropdown
-                ? setToggleDropdown(false)
-                : setToggleDropdown(true);
-            }}
-            onMouseLeave={() => {setToggleDropdown(false);}}
-            className={`flex items-center ${
-              userStatus? "hover:bg-gray-100 hover:text-black": "hover:bg-flipkart-btn-blue hover:text-white"
-            } py-2 px-3 rounded-md border-[1px] border-white hover:border-gray-300 relative`}
-          >
-            <AiOutlineUser className="text-2xl mr-1" />
-            
-              <span className="text-lg">
-                {userStatus ? "Account" : "Login"}
-              </span>
-            
+          <div onMouseEnter={() =>  toggleDropdown? setToggleDropdown(false) : setToggleDropdown(true)}
+            onMouseLeave={() => setToggleDropdown(false)}
+            className={`flex items-center ${userStatus? "hover:bg-gray-100 hover:text-black": "hover:bg-flipkart-btn-blue hover:text-white"} py-2 px-3 rounded-md border-[1px] border-white hover:border-gray-300 relative`}>
+            <AiOutlineUser className="text-2xl mr-1"/>
+            <Link to="/login">
+              <span className="text-lg">{userStatus ? "Account" : "Login"}</span>
+            </Link>
 
             {/*Login dropdown */}
             <div
@@ -148,23 +139,21 @@ function Navbar() {
               </ul>
             </div>
           </div>
-          </Link>
 
           {/* cart */}
           <Link to="/cart">
-            <div className="flex space-x-2">
+            <div className="flex items-center space-x-2">
 
-              {carts?.length >=1 &&<div className="relative">
+              {carts?.length >=1 && <div className="w-fit h-fit relative">
                 <BiSolidCart className="text-2xl" />
-                <span className="inline-block w-[18px] h-[18px] absolute -top-2 -right-1 bg-flipkart-orange px-[6px] rounded-full text-xs text-white font-bold">
+                <div className="flex justify-center items-center w-[18px] h-[18px] absolute -top-2 -right-1 bg-flipkart-orange px-[6px] rounded-full text-xs text-white font-bold">
                   {carts?.length}
-                </span>
+                </div>
               </div>}
 
               <div>
                 <span className="text-lg hidden xl:block">Cart</span>
-              </div>
-              
+              </div>    
             </div>
           </Link>
 

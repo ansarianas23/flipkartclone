@@ -16,7 +16,7 @@ function App() {
         dispatch(logout())
       }
     }).catch((error)=>{
-      console.log(error)
+      // console.log(error)
     })
   })
 

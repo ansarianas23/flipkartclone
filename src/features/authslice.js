@@ -6,9 +6,9 @@ const initialState = {
 }
 
 // console.log(initialState.status, initialState.userData);
-setTimeout(()=>{
-    console.log(initialState.status, initialState.userData);
-},20000);
+// setTimeout(()=>{
+//     console.log(initialState.status, initialState.userData);
+// },20000);
 
 
 const authSlice = createSlice({
