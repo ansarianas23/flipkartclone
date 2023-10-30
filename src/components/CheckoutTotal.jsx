@@ -3,38 +3,50 @@ import { useSelector } from "react-redux"
 function CheckoutTotal() {
 
 const carts = useSelector(state => state.cart.carts)
+console.log(carts);
 
 let totalPrice = carts?.reduce((tot, item)=>{
   return tot + item.price
 },0)
 
+let totalMrp = carts?.reduce((totMrp, item)=>{
+  return totMrp + item.mrp
+},0)
+
+
   return (
     <div className="w-full h-full flex flex-col bg-white">
-      <span className="text-gray-500 font-semibold uppercase px-5 py-2 border-b-[1px]">Price Details</span> 
+      <span className="text-gray-500 font-semibold uppercase px-6 py-3 border-b-[1px]">Price Details</span> 
 
-      <div className="mx-5 py-4 border-dashed border-b-[1px] space-y-4">
+      <div className="px-6 py-4 border-dashed border-b-[1px] space-y-4">
         <div className="flex justify-between">
           <span className="">Price ({carts?.length} item)</span>     
-          <span className="">{totalPrice}</span>     
+          <span className="">₹{totalPrice}</span>     
         </div> 
 
         <div className="flex justify-between">
           <span className="">Discount</span>     
-          <span className=" text-green-600">- 100</span>     
+          {/* <span className=" text-green-600">- 100</span>      */}
+          <span className=" text-green-600 font-medium">-₹ {totalMrp - totalPrice}</span>     
         </div> 
 
         <div className="flex justify-between">
           <span className="">Delivery Charges</span>     
-          <span className="text-green-600">Free</span>     
+          <span className="text-green-600"><span className="line-through text-gray-500">₹40</span> Free</span>     
+        </div>  
+
+        <div className="flex justify-between">
+          <span className="">Secured Packaging Fee</span>     
+          <span>₹49</span>     
         </div>  
       </div>
       
-        <div className="flex justify-between mx-5 py-4 border-dashed border-b-[1px]">
+        <div className="flex justify-between px-6 py-4 border-dashed border-b-[1px]">
           <span className="text-lg font-semibold">Total Amount: </span>     
-          <span className="text-lg font-semibold">₹{totalPrice}</span>     
+          <span className="text-lg font-semibold">₹{totalPrice + 49}</span>     
         </div>
 
-        <p className="text-green-600 px-5 py-3 font-semibold">You will save 100 on this order</p>
+        <p className="text-green-600 px-6 py-3 font-semibold">You will save {(totalMrp - totalPrice) - 49} on this order</p>
 
 
     </div>
@@ -42,3 +54,4 @@ let totalPrice = carts?.reduce((tot, item)=>{
 }
 
 export default CheckoutTotal
+

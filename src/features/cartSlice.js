@@ -15,7 +15,8 @@ const cartSlice = createSlice({
                 desc: action.payload.desc, 
                 price: action.payload.price,
                 mrp: action.payload.mrp,
-                imageUrl: action.payload.imageUrl
+                imageUrl: action.payload.imageUrl,
+                seller: action.payload.seller
             }
             state.carts.push(cartItem)
         },

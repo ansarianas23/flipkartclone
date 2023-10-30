@@ -20,6 +20,7 @@ function ProductSlider() {
                 mrp={eachItem.mrp}
                 imageUrl={eachItem.imageUrl}
                 id={eachItem.id}
+                seller = {eachItem.seller}
                 />
                 ))}
         </div>

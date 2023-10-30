@@ -13,7 +13,7 @@ function App() {
     appwriteService.getProducts().then((product) => {
       if(product){
         dispatch(addProductToStore(product.documents))
-        console.log(product.documents)
+        // console.log(product.documents)
       }
     })
 

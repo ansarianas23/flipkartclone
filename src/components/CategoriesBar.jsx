@@ -5,58 +5,53 @@ function CategoriesBar() {
   const categories = [
     {
       imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/790b539a57f7b8cd.png?q=100",
-      title: "Top Offers",
+        "https://rukminim1.flixcart.com/flap/64/64/image/29327f40e9c4d26b.png?q=100",
+      title: "Grocery",
     },
     {
       imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/444802d58a814f57.png?q=100",
-      title: "Mobile & Tablets",
+        "https://rukminim1.flixcart.com/flap/64/64/image/22fddf3c7da4c4f4.png?q=100",
+      title: "Mobiles",
     },
     {
       imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/ce3744f59fadb72e.png?q=100",
-      title: "Electronics",
-    },
-    {
-      imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/5b8ad952a656b015.png?q=100",
-      title: "TV & Appliances",
-    },
-    {
-      imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/e4b01f3d783c49a1.png?q=100",
+        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/0d75b34f7d8fbcb3.png?q=100",
       title: "Fashion",
     },
     {
       imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/9e4acc1d8929bcc6.png?q=100",
+        "https://rukminim1.flixcart.com/flap/64/64/image/69c6589653afdb9a.png?q=100",
+      title: "Electronics",
+    },
+    {
+      imgSrc:
+        "https://rukminim1.flixcart.com/flap/64/64/image/ab7e2b022a4587dd.jpg?q=100",
+      title: "Home & Furniture",
+    },
+    {
+      imgSrc:
+        "https://rukminim1.flixcart.com/flap/64/64/image/0ff199d1bd27eb98.png?q=100",
+      title: "Appliances",
+    },
+    {
+      imgSrc:
+        "https://rukminim1.flixcart.com/flap/64/64/image/71050627a56b4693.png?q=100",
+      title: "Travel",
+    },
+    {
+      imgSrc:
+        "https://rukminim1.flixcart.com/flap/64/64/image/dff3f7adcf3a90c6.png?q=100",
       title: "Beauty",
     },
     {
       imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/9ba7be5608413886.png?q=100",
-      title: "Home & Kitchen",
-    },
-    {
-      imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/dc9cb4d7bd005f70.png?q=100",
-      title: "Furniture",
-    },
-    {
-      imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/683d71deb68235d5.png?q=100",
-      title: "Flights",
-    },
-    {
-      imgSrc:
-        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/280a9406b5a7fdc8.png?q=100",
-      title: "Grocery",
+        "https://rukminim1.flixcart.com/fk-p-flap/64/64/image/05d708653beff580.png?q=100",
+      title: "Two Wheelers",
     },
   ];
 
   return (
-    <div className="w-full h-full flex overflow-x-scroll justify-center py-4 bg-white">
+    <div className=" h-full flex overflow-x-auto py-4">
       {categories.map((item) => (
         <div key={item.title} className="flex flex-col items-center px-5 hover:cursor-pointer">
           <img className="max-w-[70px] max-h-[70px]" src={item.imgSrc} alt="logo" />

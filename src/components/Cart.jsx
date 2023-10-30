@@ -25,6 +25,7 @@ function Cart() {
           mrp = {cartItem.mrp}
           imageUrl = {cartItem.imageUrl}
           specification = {cartItem.specification}
+          seller = {cartItem.seller}
           />
           ))}
 

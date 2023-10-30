@@ -3,7 +3,7 @@ import cameraImg from '../assets/camera.jpg'
 import { removeItem } from '../features/cartSlice'
 import { useState } from 'react'
 
-function CartCard({id, title, desc, price, mrp, imageUrl, specification}) {
+function CartCard({id, title, desc, price, mrp, imageUrl, specification, seller}) {
 
   const dispatch = useDispatch()
   const [quantity, setQuantity] = useState(1);
@@ -39,10 +39,16 @@ function CartCard({id, title, desc, price, mrp, imageUrl, specification}) {
         {/* Right Div */}
         <div className="left flex flex-col gap-4">
           <h4 className=''>{title}</h4>
-          <p className='text-xs'>{specification}</p>
+          {/* seller div */}
+          <div className='flex items-center space-x-2'>
+            <p className='text-sm font-medium text-gray-400'>Seller: {seller}</p>
+            <img className='w-auto h-[15px]' src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png" alt="" />
+          </div>
+
           <div className='flex items-center gap-2'>
-            <div className='text-sm line-through text-gray-500'>₹{mrp}</div>
+            <div className='text-sm line-through text-gray-400'>₹{mrp}</div>
             <div className='text-xl font-semibold'>₹{price}</div>
+            <div className='text-sm font-semibold text-green-600'>{100 - Math.ceil((price/mrp) * 100)}% off</div>
           </div>
 
           <div className='flex gap-5 font-semibold'>
