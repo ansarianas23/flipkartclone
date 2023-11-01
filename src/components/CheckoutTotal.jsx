@@ -28,7 +28,7 @@ let totalMrp = carts?.reduce((totMrp, item)=>{
         <div className="flex justify-between">
           <span className="">Discount</span>     
           {/* <span className=" text-green-600">- 100</span>      */}
-          <span className=" text-green-600 font-medium">-₹ {totalMrp - totalPrice}</span>     
+          <span className=" text-green-600 font-medium">-₹{totalMrp - totalPrice}</span>     
         </div> 
 
         <div className="flex justify-between">
