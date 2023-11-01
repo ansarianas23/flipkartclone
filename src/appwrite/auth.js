@@ -11,6 +11,7 @@ export class AuthService {
         this.account = new Account(this.client)
     }
 
+    // Service to create account by email
     async createAccount({email, password, name}){
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
@@ -20,18 +21,40 @@ export class AuthService {
                 return userAccount;
             }
         } catch (error) {
-            throw error
+            console.log("Appwrite service :: login ::", error)
         }
     }
 
+    // Service to login account by email
     async login({email, password}){
         try {
             return await this.account.createEmailSession(email, password)
         } catch (error) {
-            throw error
+            console.log("Appwrite service :: login ::", error)
         }
     }
 
+    // Service to get login by OTP on phone
+    async getLoginOtp(phoneNo){
+        try {
+            const sessionToken = await this.account.createPhoneSession(ID.unique(), '+91'+ phoneNo)
+            return sessionToken;
+
+        } catch (error) {
+            console.log("Appwrite service :: getLoginOtp ::", error)
+        }
+    }
+
+    // Service to login by OTP
+    async loginByOtp({uID, Otp}){
+        try {
+            return await this.account.updatePhoneSession(uID, Otp)  // both param should be string and when passes variable name also should be same
+        } catch (error) {
+            console.log("Appwrite service :: loginByOtp ::", error)
+        }
+    }
+
+    // Service to get current user by email or phone
     async getCurrentUser(){
         try {
             return await this.account.get()
@@ -42,9 +65,10 @@ export class AuthService {
         return null;
     }
 
+    //  Service to logout session
     async logout(){
         try {
-            await this.account.deleteSessions()
+            await this.account.deleteSession('current')
         } catch (error) {
             console.log("Appwrite service :: logout ::", error)
         }

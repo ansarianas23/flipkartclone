@@ -8,12 +8,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 function SignUp() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [inputType, setInputType] = useState("password")
 
+  const [phoneNo, setPhoneNo] = useState('')
+  const [Otp, setOtp] = useState('')
+  const [uID, setUId] = useState('');
+  const [error, setError] = useState("");
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ function SignUp() {
         password,
         name,
       });
+      
       if (userData) {
         const userData = await authService.getCurrentUser();
         if (userData) {
@@ -58,7 +59,7 @@ function SignUp() {
   };
 
   return (
-    <div className=" bg-white w-[350px] h-fit rounded-md relative flex flex-col items-center pt-5 mx-auto mt-20 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+    <div className="flex justify-center w-full ">
 
       {/* Toast Container */}
       <ToastContainer 
@@ -73,95 +74,47 @@ function SignUp() {
       pauseOnHover
       theme="light"/>
 
+      <div className="flex w-[845px] h-[535px] bg-white">
+        {/* <form className="flex flex-col space-y-4">
+          <input onChange={(e)=>{setPhoneNo(e.target.value)}} className="p-1 outline-none" type="text" placeholder="Phone"/>
+          <input onChange={(e)=>{setOtp(e.target.value)}} className="p-1 outline-none" type="text" placeholder="otp"/>
+          <button onClick={handleOTP} className="bg-blue-400 text-white w-fit mx-auto p-2">Request OTP</button>
+          <button onClick={handleLogin} className="bg-blue-400 text-white w-fit mx-auto p-2">Login</button>
+        </form> */}
 
-      <h1 className="text-center text-3xl font-medium">Sign Up</h1>
-      <form className="w-[80%] flex flex-col">
-        <label className="mb-2" htmlFor="email">
-          Name:{" "}
-        </label>
-        <input
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          id="username"
-          className="mb-4 outline-none border rounded-sm py-1 px-2 border-black"
-          type="text"
-          placeholder="Enter your username here"
-          value={name}
-        />
-
-        <label className="mb-2" htmlFor="email">
-          Email:{" "}
-        </label>
-        <input
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          id="email"
-          className="outline-none border rounded-sm py-1 px-2 border-black"
-          type="text"
-          placeholder="Enter your email here"
-          value={email}
-        />
-
-        <div className="flex flex-col relative">
-          <label className="mt-5 mb-2" htmlFor="password">
-            Password
-          </label>
-
-          <div className="flex items-center">
-            <input
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              id="password"
-              className="w-full outline-none border rounded-sm py-1 px-2 border-black pr-7"
-              type={inputType}
-              placeholder="Enter your password here"
-              value={password}
-            />
-
-            <div
-              onClick={() => {
-                inputType === "password"
-                  ? setInputType("text")
-                  : setInputType("password");
-              }}
-              className="ml-1 absolute right-2"
-            >
-              {inputType === "password" ? (
-                <AiOutlineEye className="cursor-pointer" />
-              ) : (
-                <AiOutlineEyeInvisible className="cursor-pointer" />
-              )}
-            </div>
+        {/* left div */}
+        <div className="w-[40%] h-full bg-flipkart-blue py-10 px-8">
+          <div className="flex flex-col text-white space-y-4">
+            <h2 className="text-[28px] font-medium">Looks like you're new here!</h2>
+            <p className="text-lg font-normal">Sign up with your mobile number to get started</p>
           </div>
         </div>
 
-        <button
-          disabled={
-            name.length === 0 && email.length == 0 && password.length == 0
-              ? true
-              : false
-          }
-          onClick={create}
-          className={`${
-            email.length == 0 && password.length == 0
-              ? "bg-orange-300"
-              : "bg-flipkart-orange"
-          } rounded-sm  text-white py-2 mt-10`}
-        >
-          Sign up
-        </button>
-      </form>
+        {/* right div */}
+        <div className="flex flex-col px-10 pt-16 pb-10 h-full w-[60%]">
+            <form className="flex flex-col space-y-4">
+              <input 
+              className="outline-none border-b-[1px] border-gray-300 py-2 focus:border-flipkart-btn-blue transition-all ease-out" 
+              type="text" 
+              placeholder="Enter Mobile Number"/>
 
-      <div className="my-4">
-        <Link to="/login">
-          <span className="underline hover:text-flipkart-orange transition">
-            Login
-          </span>
-        </Link>
+              <span className="text-xs text-gray-400">By continuing, you agree to Flipkart's  
+                <span className="text-flipkart-blue cursor-pointer"> Terms of Use </span>
+                 and
+                <span className="text-flipkart-blue cursor-pointer"> Privacy Policy.</span>
+              </span>
+              
+              <button className="text-white bg-flipkart-orange font-medium w-full py-3 rounded-sm uppercase">Continue</button>
+
+              <Link to="/login">
+                <span className="inline-block text-flipkart-blue bg-white font-medium w-full py-3 rounded-sm uppercase text-center shadow-md">Existing User?Log in</span>
+              </Link>
+            </form>
+        </div>
+
       </div>
+
+
     </div>
   );
 }

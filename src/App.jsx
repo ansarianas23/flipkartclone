@@ -13,10 +13,10 @@ function App() {
     appwriteService.getProducts().then((product) => {
       if(product){
         dispatch(addProductToStore(product.documents))
-        // console.log(product.documents)
       }
     })
 
+    // code to persist login/ loout state after page refresh
     authService.getCurrentUser()
     .then((userData)=>{
       if(userData){
@@ -27,15 +27,6 @@ function App() {
       }
     })
   },[])
-
-    // useEffect(() => {
-    //     appwriteService.getProducts().then((product) => {
-    //       if(product){
-    //         dispatch(addProductToStore(product.documents))
-    //         console.log(product.documents)
-    //       }
-    //     })
-    // }, [])
 
   return (
     <>

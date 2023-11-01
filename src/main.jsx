@@ -1,35 +1,32 @@
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import Cart from './components/Cart'
 import Layout from './components/Layout'
-import Products from './components/Products'
 import { Provider } from 'react-redux'
 import store from './store/store'
-import Login from './components/Login'
-import SignUp from './components/SignUp'
 import App from './App'
-import Profile from './components/Profile'
-import Orders from './components/Orders'
 import ProductPage from './components/ProductPage'
+import HomePage from './pages/HomePage'
+import CartPage from './pages/CartPage'
+import LoginPage from './pages/LoginPage'
+import SignUpPage from './pages/SignUpPage'
+import ProfilePage from './pages/ProfilePage'
+import OrdersPage from './pages/OrdersPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
-      <Route path='/' element={<Products/>}/>
-      <Route path='/home' element={<Products/>}/>
-      <Route path='/cart' element={<Cart/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/signup' element={<SignUp/>}/>
-      <Route path='/profile' element={<Profile/>}/>
-      <Route path='/orders' element={<Orders/>}/>
+      <Route path='/' element={<HomePage/>}/>
+      <Route path='/home' element={<HomePage/>}/>
+      <Route path='/cart' element={<CartPage/>}/>
+      <Route path='/login' element={<LoginPage/>}/>
+      <Route path='/signup' element={<SignUpPage/>}/>
+      <Route path='/profile' element={<ProfilePage/>}/>
+      <Route path='/orders' element={<OrdersPage/>}/>
       <Route path='/productdetails/:id' element={<ProductPage/>}/>
     </Route>
   )
 )
-
-// to persist login/logout state after refresh
-
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

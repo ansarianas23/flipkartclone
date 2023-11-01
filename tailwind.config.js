@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors:{
-        'flipkart-blue': '#287FF0',
+        'flipkart-blue': '#2874f0',
         'flipkart-orange': '#FB641B',
         'flipkart-yellow': '#ff9f00',
         'flipkart-green': '#388e3c',
