@@ -49,7 +49,7 @@ function ProductPage() {
     }
 
   return (
-    <div className='flex justify-between mx-auto p-4 mt-1 mb-3 bg-white w-[72vw] h-fit'> 
+    <div className='flex flex-col lg:flex-row space-y-3 lg:space-y-0 justify-between mx-auto p-4 mt-1 mb-3 bg-white   w-[72vw] h-fit'> 
 
     {/* Toast Container */}
     <ToastContainer 
@@ -65,22 +65,22 @@ function ProductPage() {
       theme="light"/>
 
       {/* left image Box */}
-      <div className='flex flex-col sticky top-20 h-fit'>
-        <div className='border-[1px] w-[450px] h-[450px] py-5 flex justify-center items-center'>
+      <div className='flex flex-col lg:sticky top-20 w-[40vw] lg:w-[30vw] h-fit'>
+        <div className='border-[1px] w-full h-fit py-5 flex justify-center items-center'>
             <img className='object-contain w-[70%] h-auto' src={matchedProduct.imageUrl} alt="productImage" />
         </div>
         <div className='w-full flex justify-between text-white mt-3'>
-            <button onClick={handleAddtoCart} className='flex justify-center items-center uppercase font-semibold bg-flipkart-yellow py-4 w-[220px] rounded-sm shadow-md'>
+            <button onClick={handleAddtoCart} className='flex justify-center items-center uppercase font-semibold bg-flipkart-yellow py-4 rounded-sm shadow-md w-[49%]'>
                 <BiSolidCart className='mr-1'/> Add to cart
             </button>
-            <button onClick={handleBuyNow} className='flex justify-center items-center uppercase font-semibold bg-flipkart-orange py-4 w-[220px] rounded-sm shadow-md'>
+            <button onClick={handleBuyNow} className='flex justify-center items-center uppercase font-semibold bg-flipkart-orange py-4 rounded-sm shadow-md w-[49%]'>
                <MdFlashOn className='mr-1'/> Buy Now
             </button>
         </div>
       </div>
 
       {/* Right Info Div */}
-      <div className='w-[65%] space-y-4'>
+      <div className='w-full lg:w-[65%] space-y-4 lg:ml-5'>
         <div className=''>
           <p className='text-xl'>{matchedProduct.title}</p>
         </div>

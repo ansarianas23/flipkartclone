@@ -9,10 +9,10 @@ function CartPage() {
   const carts = useSelector(state => state.cart.carts)
 
   return (
-    <div className='w-[65vw] min-h-fit mx-auto my-5 flex justify-between relative'>
+    <div className='w-[65vw] min-h-fit mx-auto my-5 flex flex-col lg:flex-row justify-between relative space-y-3 lg:space-y-0'>
 
       {/* Cart Products Container */}
-      {carts?.length >=1 && <div className=" w-[69%] h-fit relative">
+      {carts?.length >=1 && <div className="w-full lg:w-[69%] h-fit relative">
         {carts.map((cartItem)=>(
           
           <CartCard
@@ -37,7 +37,7 @@ function CartPage() {
       
 
       {/* Checkout total container */}
-      {<div className="w-[30%] h-fit sticky top-20">
+      {<div className="w-full lg:w-[30%] h-fit sticky top-20">
         {carts?.length >= 1 && <CheckoutTotal/>}
       </div>}
       
