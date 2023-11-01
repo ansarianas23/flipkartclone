@@ -7,6 +7,7 @@ import { useRef } from 'react';
 function ProductSlider({title}) {
 
   const products = useSelector(state => state.product.products)
+  
   const ref = useRef(null);
 
   const handlePrevious = ()=>{
