@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import authService from "../appwrite/auth";
 import { logout } from "../features/authslice";
-import { AiOutlineSearch, AiOutlineDownload } from "react-icons/ai";
-import { BiSolidCart } from "react-icons/bi";
+import { AiOutlineSearch, AiOutlineDownload, AiOutlineShop } from "react-icons/ai";
+import { BsCart3 } from "react-icons/bs";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { BsBoxSeam, BsBell } from "react-icons/bs";
@@ -15,9 +15,11 @@ import { FiLogOut } from "react-icons/fi";
 function Navbar() {
   const carts = useSelector((state) => state.cart.carts);
   const userStatus = useSelector((state) => state.auth.status);
-  const userData = useSelector((state) => state.auth.userData);
+
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [toggleDropdown2, setToggleDropdown2] = useState(false);
+  const currentPageLocation = window.location.href.toString().slice(22);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,80 +27,82 @@ function Navbar() {
     e.preventDefault();
     authService.logout().then(() => {
       dispatch(logout());
+      setTimeout(() => {
+        navigate("/home");
+      }, 1500);
     });
-    setTimeout(() => {
-      navigate("/");
-    }, 1500);
   };
 
-  const logoSrc =
-    "https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_plus-535108.svg";
+  const logoSrc ="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_plus-535108.svg";
 
   return (
-    <div className="bg-white w-full">
+    <div className={`${currentPageLocation == 'home'? 'bg-white text-black': 'bg-flipkart-blue text-red-900'} w-full`}>
       <div className="w-[84vw] mx-auto flex justify-between items-cente lg:px-12 py-5 lg:py-3 ">
         {/* left part */}
         <div className="flex items-center">
           {/* main Logo */}
-          <div className="mr-7 w-fit">
             <Link to="/home">
-              <img
-                src={logoSrc}
-                width="130"
-                height="38"
-                alt="Flipkart"
-                title="Flipkart"
-              />
+              <div className="mr-7 w-fit">
+                  <div className="flex flex-col items-center">
+                    <span className={`${currentPageLocation == 'home'?"text-flipkart-btn-blue" : "text-white"} font-bold italic text-xl `}>Flipkart</span>
+                    <div className="flex space-x-1 items-center">
+                      <span className={`${currentPageLocation == 'home' ? "text-gray-400" : "text-white"} italic font-medium text-xs `}>Explore</span>
+                      <span className="italic font-medium text-xs text-yellow-400">Plus</span>
+                      <span className=""><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/plus-brand-bc165b.svg" alt="" /></span>
+                    </div>
+                  </div>
+              </div>
             </Link>
-          </div>
 
           {/* Middle search bar */}
-          <div className="w-[38vw] h-[40px] flex items-center rounded-lg bg-blue-50">
+          <div className="w-[38vw] h-[40px] flex items-center rounded-sm bg-blue-50 relative">
             <button className="h-full w-fit px-2 bg-transparent cursor-pointer">
               <AiOutlineSearch className="text-gray-500 text-2xl font-bold" />
             </button>
 
             <div className="w-full">
               <input
-                className="w-full text-black outline-none rounded-sm bg-transparent text-lg placeholder:text-gray-500 placeholder:font-normal"
+                className="w-full text-black outline-none bg-transparent text-lg placeholder:text-gray-500 placeholder:font-normal"
                 type="text"
-                placeholder="Search for products brand and more"
-              />
+                placeholder="Search for products brand and more"/>
             </div>
+
+            {/* search Results */}
+            {/* <div className="w-full h-fit absolute top-10 bg-white rounded-md overflow-hidden">
+              <ul className="">
+                <li className="py-2 px-3 hover:bg-blue-50 cursor-pointer">Lorem ipsum dolor sit amet.</li>
+                <li className="py-2 px-3 hover:bg-blue-50 cursor-pointer">Lorem ipsum dolor sit amet.</li>
+                <li className="py-2 px-3 hover:bg-blue-50 cursor-pointer">Lorem ipsum dolor sit amet.</li>
+                <li className="py-2 px-3 hover:bg-blue-50 cursor-pointer">Lorem ipsum dolor sit amet.</li>
+                <li className="py-2 px-3 hover:bg-blue-50 cursor-pointer">Lorem ipsum dolor sit amet.</li>
+              </ul>
+            </div> */}
+
           </div>
         </div>
 
         {/* Right part */}
-        <div className="flex justify-center items-center space-x-10 text-black">
+        <div className="flex justify-center items-center space-x-10 text-white">
           
           {/* Become a seller */}
-          <div className="min-w-fit space-x-2 ml-20 hidden md:flex cursor-pointer">
-            <img
-              className="w-fit"
-              src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Store-9eeae2.svg"
-              alt=""
-            />
+          <div className={`${currentPageLocation == 'home'? 'text-black' : 'text-white'} min-w-fit space-x-2 ml-20 hidden md:flex items-center cursor-pointer`}>
+            <AiOutlineShop className="text-2xl text-inherit"/>
             <span className="text-lg hidden xl:block">Become a Seller</span>
           </div>
 
           {/* login button */}
           <div onMouseEnter={() =>  toggleDropdown? setToggleDropdown(false) : setToggleDropdown(true)}
             onMouseLeave={() => setToggleDropdown(false)}
-            className={`flex items-center ${userStatus? "hover:bg-gray-100 hover:text-black": "hover:bg-flipkart-btn-blue hover:text-white"} py-2 px-3 rounded-md border-[1px] border-white hover:border-gray-300 relative`}>
+            className={`${currentPageLocation == 'home'? 'text-black hover:bg-gray-100 border-[1px] border-white hover:border-gray-300 rounded-md' : 'text-white'} flex items-center py-1 px-3 relative`}>
             <AiOutlineUser className="text-2xl mr-1"/>
-            <Link to="/login">
-              <span className="text-lg">{userStatus ? "Account" : "Login"}</span>
+
+            <Link to={userStatus? '/home' :"/login"}>
+              <span className=" text-lg ">{userStatus ? "Account" : "Login"}</span>
             </Link>
 
             {/*Login dropdown */}
-            <div
-              onMouseLeave={() => {
-                setToggleDropdown(false);
-              }}
-              className={`z-10 ${
-                toggleDropdown ? "block" : "hidden"
-              } w-[250px] absolute left-0 top-11 bg-white text-black rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden`}
-            >
+            <div onMouseLeave={() => {setToggleDropdown(false)}}
+              className={`z-10 ${toggleDropdown ? "block" : "hidden"} w-[250px] absolute left-0 top-9 bg-white text-black rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden`}>
               <ul>
                 {!userStatus && <Link to="/signup">
                   <li className="w-full py-3 px-3 border-b-[1px] flex justify-between">
@@ -121,7 +125,7 @@ function Navbar() {
                   </li>
                 </Link>
 
-                <Link to="/">
+                <Link to="/wishlist">
                   <li className="px-4 py-2 hover:bg-gray-100 text-sm flex items-center">
                     <span className="mr-1"><AiOutlineHeart /></span>
                     <span>Wishlist</span>
@@ -142,14 +146,15 @@ function Navbar() {
 
           {/* cart */}
           <Link to="/cart">
-            <div className="flex items-center space-x-2">
+            <div className={`${currentPageLocation == 'home'? 'text-black' : 'text-white'} flex items-center space-x-2`}>
 
-              {carts?.length >=1 && <div className="w-fit h-fit relative">
-                <BiSolidCart className="text-2xl" />
-                <div className="flex justify-center items-center w-[18px] h-[18px] absolute -top-2 -right-1 bg-flipkart-orange px-[6px] rounded-full text-xs text-white font-bold">
+              <div className="w-fit h-fit relative">
+                <BsCart3 className="text-xl" />
+
+                {carts?.length >=1 && <div className="flex justify-center items-center w-[18px] h-[18px] absolute -top-2 -right-1 bg-flipkart-orange px-[6px] rounded-full text-xs text-white font-bold">
                   {carts?.length}
-                </div>
-              </div>}
+                </div>}
+              </div>
 
               <div>
                 <span className="text-lg hidden xl:block">Cart</span>
@@ -157,18 +162,13 @@ function Navbar() {
             </div>
           </Link>
 
-          <div 
-          onMouseEnter={()=>{
-            toggleDropdown2? setToggleDropdown2(false) : setToggleDropdown2(true)
-          }}
-          onMouseLeave={() => {
-            setToggleDropdown2(false);
-          }} 
+          {currentPageLocation == 'home' && <div onMouseEnter={()=>{toggleDropdown2? setToggleDropdown2(false) : setToggleDropdown2(true)}}
+          onMouseLeave={() => {setToggleDropdown2(false)}} 
           className="relative hover:bg-gray-100 border-[1px] border-white hover:border-gray-300 rounded-md p-2 cursor-pointer">
-            <PiDotsThreeVerticalBold className="text-2xl text-gray-500" />
+            <PiDotsThreeVerticalBold className={`text-2xl text-gray-500`} />
 
             {/* other dropdown */}
-            <div className={`${toggleDropdown2? "block" : "hidden"} bg-white rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden absolute top-10 right-0 w-[220px]`}>
+            <div className={`${toggleDropdown2? "block" : "hidden"} text-black bg-white rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden absolute top-10 right-0 w-[220px]`}>
               <ul className="space-y-1">
                 <li className="cursor-pointer hover:bg-gray-100 px-3 py-2 flex items-center">
                   <span className="mr-1"><BsBell/></span>
@@ -188,7 +188,7 @@ function Navbar() {
                 </li>
               </ul>
             </div>
-          </div>
+          </div>}
 
         </div>
       </div>

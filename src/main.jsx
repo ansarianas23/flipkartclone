@@ -5,13 +5,14 @@ import Layout from './components/Layout'
 import { Provider } from 'react-redux'
 import store from './store/store'
 import App from './App'
-import ProductPage from './components/ProductPage'
+import ProductDetails from './components/ProductDetails'
 import HomePage from './pages/HomePage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
 import SignUpPage from './pages/SignUpPage'
 import ProfilePage from './pages/ProfilePage'
 import OrdersPage from './pages/OrdersPage'
+import WishListPage from './pages/WishListPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +24,8 @@ const router = createBrowserRouter(
       <Route path='/signup' element={<SignUpPage/>}/>
       <Route path='/profile' element={<ProfilePage/>}/>
       <Route path='/orders' element={<OrdersPage/>}/>
-      <Route path='/productdetails/:id' element={<ProductPage/>}/>
+      <Route path='/wishlist' element={<WishListPage/>}/>
+      <Route path='/productdetails/:id' element={<ProductDetails/>}/>
     </Route>
   )
 )

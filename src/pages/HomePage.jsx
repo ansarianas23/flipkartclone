@@ -1,7 +1,6 @@
 import CategoriesBar from '../components/CategoriesBar'
-import Slider from '../components/Slider'
+import BannerImageSlider from '../components/BannerImageSlider'
 import ProductSlider from '../components/ProductSlider'
-import Footer from '../components/Footer'
 
 function HomePage() {
   return (
@@ -16,19 +15,18 @@ function HomePage() {
 
         {/* Image Slider */}
         <div className="w-full h-auto mb-5 overflow-hidden">
-          <Slider />
+          <BannerImageSlider />
         </div>
 
         {/* Product Slider */}
-        <div className="w-full h-fit bg-white mb-5 overflow-x-auto">
-          <ProductSlider />
+        <div className="w-full h-fit bg-white mb-5 overflow-x-auto" >
+          <ProductSlider title = "Best Mobile"/>
         </div>
 
-      </div>
+        {/* <div className="w-full h-fit bg-white mb-5 overflow-x-auto">
+          <ProductSlider title = "Best Laptops"/>
+        </div> */}
 
-      {/* Footer */}
-      <div className="w-full h-auto">
-        <Footer />
       </div>
     </>
   )

@@ -5,19 +5,42 @@ import { MdFlashOn } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux'
 import { addTocart } from '../features/cartSlice'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function ProductPage() {
 
     const { id }  = useParams();
-    const products = useSelector(state=>state.product.products)
+    const products = useSelector(state => state.product.products)
     const matchedProduct = products.find((item)=> item.id == id )
     const parsedSpecs = JSON.parse(matchedProduct.specification[0])
+    const carts = useSelector(state => state.cart.carts)
     const navigate = useNavigate()
 
     const dispatch = useDispatch();
 
+
+
     const handleAddtoCart = ()=>{
         dispatch(addTocart(matchedProduct))
+        setTimeout(() => {
+          toast.success('Item Added To Cart', {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+        }, 200);
+
+        setTimeout(()=>{
+          let num = carts?.includes(matchedProduct,0);
+          console.log(num)
+        },1000)
+
     }
 
     const handleBuyNow = ()=>{
@@ -27,6 +50,19 @@ function ProductPage() {
 
   return (
     <div className='flex justify-between mx-auto p-4 mt-1 mb-3 bg-white w-[72vw] h-fit'> 
+
+    {/* Toast Container */}
+    <ToastContainer 
+      position="bottom-center"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"/>
 
       {/* left image Box */}
       <div className='flex flex-col sticky top-20 h-fit'>
@@ -55,8 +91,13 @@ function ProductPage() {
             <span className='text-xs text-white font-medium'>4.2</span>
             <AiFillStar className='text-white text-xs'/>
           </div>
+
+          <div className=''>
+            <span className='text-sm font-medium text-gray-400'>Ratings</span>
+          </div>
+
           <div>
-            <img className='w-auto h-[20px]' src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png" alt="" />
+            <img className='w-auto h-[20px]' src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png" alt="fk-assured-logo" />
           </div>
         </div>
 

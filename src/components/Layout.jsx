@@ -9,13 +9,13 @@ function Layout() {
         <Navbar/>
       </div>
 
-      <div>
+      <div className='min-h-[61vh]'>
         <Outlet/>
       </div>
 
-      {/* <div className=''>
+      <div className=''>
         <Footer/>
-      </div> */}
+      </div>
         
     </div>
   )

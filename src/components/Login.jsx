@@ -53,7 +53,7 @@ function Login() {
 
             dispatch(authLogin(userInfo))
             setTimeout(() => {
-              navigate("/")
+              navigate("/home")
             }, 1500);
           }
       }

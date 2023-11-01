@@ -1,7 +1,7 @@
 
 function Footer() {
   return (
-    <div className="w-full bg-[#212121] text-white ">
+    <div className="w-full h-fit bg-[#212121] text-white ">
       {/* upper footer */}
       <div className="flex flex-wrap text-sm font-semibold py-9 px-14">
 

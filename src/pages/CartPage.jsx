@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux"
 import CartCard from "../components/CartCard"
 import CheckoutTotal from "../components/CheckoutTotal"
-import { AiFillSafetyCertificate } from "react-icons/ai";
-import { Link } from "react-router-dom";
 import EmptyCartMessage from "../components/EmptyCartMessage";
 import PlaceOrderBtn from "../components/PlaceOrderBtn";
 
@@ -11,7 +9,7 @@ function CartPage() {
   const carts = useSelector(state => state.cart.carts)
 
   return (
-    <div className='w-[65vw] min-h-[91vh] mx-auto mt-5 flex justify-between relative'>
+    <div className='w-[65vw] min-h-fit mx-auto my-5 flex justify-between relative'>
 
       {/* Cart Products Container */}
       {carts?.length >=1 && <div className=" w-[69%] h-fit relative">
