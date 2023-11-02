@@ -51,7 +51,7 @@ function CategoriesBar() {
   ];
 
   return (
-    <div className=" h-full flex overflow-x-auto py-4">
+    <div className=" h-full flex overflow-x-auto py-4 scrollbar-hide">
       {categories.map((item) => (
         <div key={item.title} className="flex flex-col items-center px-5 hover:cursor-pointer">
           <img className="max-w-[70px] max-h-[70px]" src={item.imgSrc} alt="logo" />

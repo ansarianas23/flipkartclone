@@ -26,33 +26,18 @@ function ProductSlider({title}) {
   return (
     <div className='py-5 px-6'>
         <h1 className='text-2xl font-semibold pb-5'>{title}</h1>
-        {/* <div className='flex gap-4 '>
-            {products.map((eachItem) => (
-                <ProductCard
-                key={eachItem.title}
-                title={eachItem.title}
-                desc={eachItem.desc}
-                price={eachItem.price}
-                mrp={eachItem.mrp}
-                imageUrl={eachItem.imageUrl}
-                id={eachItem.id}
-                seller = {eachItem.seller}
-                />
-                ))}
-        </div> */}
-
           <Carousel
             swipeable={false}
             draggable={false}
             responsive={responsive}
+            // autoPlay={true}
+            // autoPlaySpeed={10000}
             // centerMode={true}
+            // removeArrowOnDeviceType={["tablet", "mobile"]}
             infinite={true}
-            autoPlay={true}
-            autoPlaySpeed={10000}
             keyBoardControl={true}
             showDots={false}
             containerClass="carousel-container"
-            // removeArrowOnDeviceType={["tablet", "mobile"]}
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item-padding-40-px"
           >

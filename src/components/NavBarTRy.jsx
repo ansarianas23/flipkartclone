@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -36,14 +37,13 @@ function Navbar() {
   const logoSrc ="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_plus-535108.svg";
 
   return (
-    <div className={`${currentPageLocation == 'home'? 'bg-white text-black': 'bg-flipkart-blue text-red-900'} w-full`}>
-      <div className="w-full flex justify-between px-7 py-3">      {/* px-52 */}
+      <div className={`${currentPageLocation == 'home'? 'bg-white text-black': 'bg-flipkart-blue'} w-full h-[65px] grid grid-cols-2 grid-rows-2 md:grid-cols-3`}>      {/* px-52 */}
 
         {/* left part */}
-        <div className="flex flex-col md:flex-row md:items-center ">
+        <div className="w-fit h-fit bg-green-100">
           {/* main Logo */}
             <Link to="/home">
-              <div className="mr-7 w-fit">
+              <div>
                   <div className="flex flex-col items-center">
                     <span className={`${currentPageLocation == 'home'?"text-flipkart-btn-blue" : "text-white"} font-bold italic text-xl `}>Flipkart</span>
                     <div className="flex space-x-1 items-center">
@@ -54,16 +54,18 @@ function Navbar() {
                   </div>
               </div>
             </Link>
+        </div>
+        {/* Left Part End Here */}
 
-          {/* Middle search bar */}
-          <div className="w-[50vw] md:w-[38vw] h-[40px] flex items-center rounded-sm bg-blue-50 relative mt-5 md:mt-0">
+        {/* Middle search bar */}
+        <div className="col-span-3 md:col-span-1 w-[38vw] h-[40px] flex items-center rounded-sm bg-blue-50 order-3 md:order-2">
             <button className="h-full w-fit px-2 bg-transparent cursor-pointer">
               <AiOutlineSearch className="text-gray-500 text-2xl font-bold" />
             </button>
 
             <div className="w-full">
               <input
-                className="w-full h-full inline-block text-black outline-none bg-transparent text-lg placeholder:text-gray-500 placeholder:font-normal"
+                className="w-full h-full text-black outline-none bg-transparent text-lg placeholder:text-gray-500 placeholder:font-normal"
                 type="text"
                 placeholder="Search for products brand and more"/>
             </div>
@@ -78,12 +80,11 @@ function Navbar() {
                 <li className="py-2 px-3 hover:bg-blue-50 cursor-pointer">Lorem ipsum dolor sit amet.</li>
               </ul>
             </div> */}
-
-          </div>
         </div>
+        {/* Middle search bar Ends Here */}
 
         {/* Right part */}
-        <div className="flex w-fit h-fit gap-10 ml-[5vw] ">
+        <div className="flex w-fit h-fit gap-10 bg-red-100 col-span-1 order-2 md:order-3">
           
           {/* Become a seller */}
           <div className={`${currentPageLocation == 'home'? 'text-black' : 'text-white'} min-w-fit space-x-2 hidden md:flex items-center cursor-pointer`}>
@@ -156,7 +157,7 @@ function Navbar() {
                 </div>
 
               <Link to="/cart">  
-                  <span className="text-lg hidden xl:block">Cart</span>
+                  <p className="text-lg hidden xl:block">Cart</p>
               </Link>
             </div>
 
@@ -189,8 +190,8 @@ function Navbar() {
           </div>}
 
         </div>
+        {/* Right Part End Here */}
       </div>
-    </div>
   );
 }
 
