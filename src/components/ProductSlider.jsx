@@ -1,26 +1,32 @@
 import React from 'react'
 import ProductCard from './ProductCard'
 import { useSelector } from 'react-redux'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-import { useRef } from 'react';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 function ProductSlider({title}) {
 
-  const products = useSelector(state => state.product.products)
-  
-  const ref = useRef(null);
+  const responsive = {
+    desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 7,
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 3,
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1,
+    }
+};
 
-  const handlePrevious = ()=>{
-    ref.current?.scrollIntoView({behavior: 'smooth'});
-  }
-  const handleNext = ()=>{
-    ref.current?.scrollIntoView({behavior: 'smooth'});
-  }
+  const products = useSelector(state => state.product.products)
 
   return (
-    <div className='w-fit h-fit py-5 px-6 relative'>
+    <div className='py-5 px-6'>
         <h1 className='text-2xl font-semibold pb-5'>{title}</h1>
-        <div ref={ref} className='flex gap-4 '>
+        {/* <div className='flex gap-4 '>
             {products.map((eachItem) => (
                 <ProductCard
                 key={eachItem.title}
@@ -33,17 +39,36 @@ function ProductSlider({title}) {
                 seller = {eachItem.seller}
                 />
                 ))}
-        </div>
-
-        {/* <div className='absolute top-[45%] flex justify-between bg-red-300'>
-          <div onClick={handlePrevious} className='text-xl text-gray-400 bg-white shadow-md rounded-sm py-8 px-2 cursor-pointer'>
-            <FaAngleLeft />
-          </div>
-          
-          <div onClick={handleNext} className='text-xl text-gray-400 bg-white shadow-md rounded-sm py-8 px-2 cursor-pointer'>
-            <FaAngleRight />
-          </div>
         </div> */}
+
+          <Carousel
+            swipeable={false}
+            draggable={false}
+            responsive={responsive}
+            // centerMode={true}
+            infinite={true}
+            autoPlay={true}
+            autoPlaySpeed={10000}
+            keyBoardControl={true}
+            showDots={false}
+            containerClass="carousel-container"
+            // removeArrowOnDeviceType={["tablet", "mobile"]}
+            dotListClass="custom-dot-list-style"
+            itemClass="carousel-item-padding-40-px"
+          >
+            {products.map((eachItem) => (
+                <ProductCard
+                key={eachItem.title}
+                title={eachItem.title}
+                desc={eachItem.desc}
+                price={eachItem.price}
+                mrp={eachItem.mrp}
+                imageUrl={eachItem.imageUrl}
+                id={eachItem.id}
+                seller = {eachItem.seller}
+                />
+                ))}
+        </Carousel>
     </div>
   )
 }

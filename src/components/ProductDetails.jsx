@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addTocart } from '../features/cartSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import { useEffect } from 'react';
 
 function ProductPage() {
 
@@ -47,6 +48,10 @@ function ProductPage() {
       dispatch(addTocart(matchedProduct))
       navigate("/cart")
     }
+
+    useEffect(()=>{
+      window.scrollTo({ top:0, behavior: 'auto'})
+    },[])
 
   return (
     <div className='flex flex-col lg:flex-row space-y-3 lg:space-y-0 justify-between mx-auto p-4 mt-1 mb-3 bg-white   w-[72vw] h-fit'> 

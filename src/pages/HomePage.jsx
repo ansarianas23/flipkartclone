@@ -19,7 +19,7 @@ function HomePage() {
         </div>
 
         {/* Product Slider */}
-        <div className="w-full h-fit bg-white mb-5 overflow-x-auto" >
+        <div className="w-full h-fit bg-white mb-5" >
           <ProductSlider title = "Best Mobile"/>
         </div>
 
