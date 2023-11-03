@@ -3,7 +3,7 @@ function Footer() {
   return (
     <div className="w-full h-fit bg-[#212121] text-white ">
       {/* upper footer */}
-      <div className="flex flex-wrap text-sm font-semibold py-9 px-14">
+      <div className="w-full flex justify-between flex-wrap text-sm font-semibold py-9 px-8 md:px-14 space-y-5">
 
         <div className="flex flex-col w-[280px]">
           <h3 className="mb-2 text-gray-500">ABOUT</h3>
@@ -69,8 +69,7 @@ function Footer() {
       </div>
 
       {/* Lower footer */}
-      <div className="border-t-[0.5px] border-gray-600 w-full"/>
-      <div className="flex justify-between px-28 text-sm py-5">
+      <div className="w-full border-t-[0.5px] border-gray-600 flex flex-col xl:flex-row flex-wrap justify-between px-8 xl:px-28 text-sm py-5 space-y-5 xl:space-y-0">
         <div className="flex space-x-2">
           <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/sell-image-9de8ef.svg" alt="" />
           <span>Become a seller</span>
@@ -91,14 +90,13 @@ function Footer() {
           <span>Help Center</span>
         </div>
 
-        <div className="flex space-x-2">
+        <div>
           <span>&#169; 2007-2023 Flipkart.com</span>
         </div>
 
-        <div className="flex space-x-2">
+        <div>
           <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/payment-method-c454fb.svg" alt="payment-logo" />
         </div>
-
       </div>
     </div>
   )

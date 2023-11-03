@@ -55,7 +55,7 @@ function Navbar() {
         </div>
 
         {/* Middle search bar */}
-        <div className="w-full md:max-w-[38vw] h-[40px] flex items-center rounded-sm bg-blue-50 relative col-span-4 md:col-span-3 order-3 md:order-2 row-span-1">
+        <div className="w-full md:max-w-[50%] h-[40px] flex items-center rounded-sm bg-blue-50 relative col-span-4 md:col-span-3 order-3 md:order-2 row-span-1">
           <button className="h-full w-fit px-2 bg-transparent cursor-pointer">
             <AiOutlineSearch className="text-gray-500 text-2xl font-bold" />
           </button>
