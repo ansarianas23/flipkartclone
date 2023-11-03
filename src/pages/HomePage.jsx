@@ -14,7 +14,7 @@ function HomePage() {
         </div>
 
         {/* Banner Image Slider */}
-        <div className="w-full h-auto mb-2 md:mb-5 overflow-hidden">
+        <div className="w-full h-auto mb-2 md:mb-5">
           <BannerImageSlider />
         </div>
 

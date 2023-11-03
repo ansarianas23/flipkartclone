@@ -8,23 +8,35 @@ function ProductSlider({title}) {
 
   const responsive = {
     desktop: {
-        breakpoint: { max: 3000, min: 1024 },
+        breakpoint: { max: 3000, min: 1485 },
         items: 7,
     },
+    laptop: {
+        breakpoint: { max: 1485, min: 1070 },
+        items: 5,
+    },
     tablet: {
-        breakpoint: { max: 1024, min: 464 },
+        breakpoint: { max: 1070, min: 877 },
+        items: 4,
+    },
+    mobile3: {
+        breakpoint: { max: 877, min: 680 },
         items: 3,
     },
-    mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 1,
+    mobile2: {
+        breakpoint: { max: 680, min: 475 },
+        items: 2,
+    },
+    mobile1: {
+        breakpoint: { max: 475, min: 0 },
+        items: 2,
     }
 };
 
   const products = useSelector(state => state.product.products)
 
   return (
-    <div className='py-5 px-6'>
+    <div className='w-full h-full py-5 px-6'>
         <h1 className='text-2xl font-semibold pb-5'>{title}</h1>
           <Carousel
             swipeable={false}
@@ -34,7 +46,7 @@ function ProductSlider({title}) {
             // autoPlaySpeed={10000}
             // centerMode={true}
             // removeArrowOnDeviceType={["tablet", "mobile"]}
-            centerMode={true}
+            // centerMode={true}
             infinite={true}
             keyBoardControl={true}
             showDots={false}

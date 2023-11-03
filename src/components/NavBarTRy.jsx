@@ -36,12 +36,12 @@ function Navbar() {
   const logoSrc ="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_plus-535108.svg";
 
   return (
-      <div className="w-full grid md:flex items-center grid-col-4 md:px-7 py-3 justify-between md:justify-normal gap-y-3 relative">
+      <div className="w-full grid md:flex justify-between md:justify-normal items-center grid-col-4 px-2 md:px-7 py-3 gap-y-3 relative">
 
         {/* left part main Logo */}
-        <div className="col-span-3 md:col-span-1 order-1">
+        <div className="col-span-3 md:col-span-1 order-1 mr-7">
             <Link to="/home">
-              <div className="mr-7 w-fit">
+              <div className="w-fit">
                   <div className="flex flex-col items-center">
                     <span className="text-white font-bold italic text-xl">Flipkart</span>
                     <div className="flex space-x-1 items-center">
@@ -80,29 +80,31 @@ function Navbar() {
         </div>
 
         {/* Right part */}
-        <div className="flex w-fit h-fit gap-2 md:gap-10 col-span-1 order-2 md:order-3 md:absolute md:right-0">
+        <div className="flex justify-between items-center w-auto h-auto gap-1 md:gap-10 col-span-1 order-2 md:order-3 md:absolute md:right-5">
           
             {/* Become a seller */}
-            <div className="text-white min-w-fit space-x-2 hidden md:flex items-center cursor-pointer">
+            <div className="text-white w-fit h-fit space-x-2 hidden md:flex items-center cursor-pointer">
                 <AiOutlineShop className="text-2xl text-inherit"/>
-                <span className="text-lg hidden xl:block">Become a Seller</span>
+                <div className="text-lg hidden xl:block">Become a Seller</div>
             </div>
 
             {/* login button */}
             <div onMouseEnter={() =>  toggleDropdown? setToggleDropdown(false) : setToggleDropdown(true)}
                 onMouseLeave={() => setToggleDropdown(false)}
-                className={"flex items-center hover:bg-white hover:text-black rounded-md text-white  py-1 px-3 relative"}>
+                className={"flex items-center md:hover:bg-white md:hover:text-black rounded-md text-white md:py-1 md:px-3 relative"}>
 
-                <Link to={userStatus? '/home' :"/login"}>
-                  <div className="flex">
-                    <AiOutlineUser className="text-2xl mr-1"/>
-                    <span className=" text-lg hidden lg:inline-block">{userStatus ? "Account" : "Login"}</span>
+                  <div>
+                    <Link to={userStatus? '/home' :"/login"}>
+                      <div className="w-fit h-fit flex md:space-x-2">
+                        <AiOutlineUser className="text-3xl md:text-2xl"/>
+                        <span className=" text-lg hidden lg:inline-block">{userStatus ? "Account" : "Login"}</span>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
 
                 {/*Login dropdown */}
                 <div onMouseLeave={() => {setToggleDropdown(false)}}
-                className={`z-10 ${toggleDropdown ? "block" : "hidden"} w-[250px] absolute left-0 top-9 bg-white text-black rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden`}>
+                className={`hidden z-10 ${toggleDropdown ? "md:block" : "md:hidden"} w-[250px] absolute left-0 top-12 bg-white text-black rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden`}>
                 <ul>
                     {!userStatus && <Link to="/signup">
                     <li className="w-full py-3 px-3 border-b-[1px] flex justify-between">
@@ -145,20 +147,22 @@ function Navbar() {
             </div>
 
             {/* cart */}
-                <div className="flex items-center space-x-2 text-white">
-                {/* Cart Count */}
-                    <div className="w-fit h-fit relative">
-                    <BsCart3 className="text-xl" />
-                      {carts?.length >=1 && <div className="flex justify-center items-center w-[18px] h-[18px] absolute -top-2 -right-1 bg-flipkart-orange px-[6px] rounded-full text-xs text-white font-bold">
+              <Link to="/cart">  
+              <div className="flex space-x-2 text-white">
+                <div className="flex items-center relative">
+                    <BsCart3 className="text-2xl md:text-xl" />
+                    {/* Cart Count */}
+                    {carts?.length >=1 && <div className="flex justify-center items-center w-[16px] h-[16px] absolute -top-2 -right-2 bg-flipkart-orange px-[6px] rounded-full text-xs font-bold">
                         {carts?.length}
-                      </div>}
-                    </div>
-
-                    <Link to="/cart">  
-                        <p className="text-lg hidden lg:block">Cart</p>
-                    </Link>
+                    </div>}
                 </div>
 
+                <div>
+                  <div className="text-lg hidden lg:block">Cart</div>
+                </div>
+              </div>
+              </Link>
+            
             {/* other dropdown */}
             {currentPageLocation == 'home' && <div onMouseEnter={()=>{toggleDropdown2? setToggleDropdown2(false) : setToggleDropdown2(true)}}
             onMouseLeave={() => {setToggleDropdown2(false)}} 
