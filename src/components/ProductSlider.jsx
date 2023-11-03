@@ -34,6 +34,7 @@ function ProductSlider({title}) {
             // autoPlaySpeed={10000}
             // centerMode={true}
             // removeArrowOnDeviceType={["tablet", "mobile"]}
+            centerMode={true}
             infinite={true}
             keyBoardControl={true}
             showDots={false}

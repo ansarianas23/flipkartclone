@@ -9,17 +9,17 @@ function HomePage() {
       <div className="h-auto flex flex-col items-center mt-2 mx-auto rounded-sm">
 
         {/* Category slider bar */}
-        <div className="w-full h-fit mb-5 bg-white flex justify-center">
+        <div className="w-full h-fit mb-2 md:mb-5 bg-white flex justify-center">
           <CategoriesBar />
         </div>
 
-        {/* Image Slider */}
-        <div className="w-full h-auto mb-5 overflow-hidden">
+        {/* Banner Image Slider */}
+        <div className="w-full h-auto mb-2 md:mb-5 overflow-hidden">
           <BannerImageSlider />
         </div>
 
         {/* Product Slider */}
-        <div className="w-full h-fit bg-white mb-5" >
+        <div className="w-full h-fit mb-2 md:mb-5 bg-white" >
           <ProductSlider title = "Best Mobile"/>
         </div>
 
