@@ -1,6 +1,7 @@
 import CategoriesBar from '../components/CategoriesBar'
 import BannerImageSlider from '../components/BannerImageSlider'
 import ProductSlider from '../components/ProductSlider'
+import AdBanner from '../components/AdBanner'
 
 function HomePage() {
   return (
@@ -18,14 +19,25 @@ function HomePage() {
           <BannerImageSlider />
         </div>
 
-        {/* Product Slider */}
+        {/* Product Slider 1*/}
         <div className="w-full h-fit mb-2 md:mb-5 bg-white z-10" >
           <ProductSlider title = "Best Mobile"/>
         </div>
 
-        {/* <div className="w-full h-fit bg-white mb-5 overflow-x-auto">
-          <ProductSlider title = "Best Laptops"/>
-        </div> */}
+        {/* Ad Banners 1*/}
+        <div className="w-full h-fit mb-2 md:mb-5 bg-white z-10" >
+          <AdBanner/>
+        </div>
+
+        {/* Product Slider 1*/}
+        <div className="w-full h-fit mb-2 md:mb-5 bg-white z-10" >
+          <ProductSlider title = "Top Deals on Electronics"/>
+        </div>
+
+        {/* Ad Banners 1*/}
+        <div className="w-full h-fit mb-2 md:mb-5 bg-white z-10" >
+          <AdBanner/>
+        </div>
 
       </div>
     </>
