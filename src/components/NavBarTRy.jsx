@@ -33,8 +33,6 @@ function Navbar() {
     });
   };
 
-  const logoSrc ="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_plus-535108.svg";
-
   return (
       <div className="w-full grid md:flex justify-between md:justify-normal items-center grid-col-4 px-2 md:px-7 py-3 gap-y-3 relative">
 
@@ -45,7 +43,7 @@ function Navbar() {
                   <div className="flex flex-col items-center">
                     <span className="text-white font-bold italic text-xl">Flipkart</span>
                     <div className="flex space-x-1 items-center">
-                      <span className={`${currentPageLocation == 'home' ? "text-gray-400" : "text-white"} italic font-medium text-xs `}>Explore</span>
+                      <span className="text-white italic font-medium text-xs">Explore</span>
                       <span className="italic font-medium text-xs text-yellow-400">Plus</span>
                       <span className=""><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/plus-brand-bc165b.svg" alt="" /></span>
                     </div>
@@ -104,7 +102,7 @@ function Navbar() {
 
                 {/*Login dropdown */}
                 <div onMouseLeave={() => {setToggleDropdown(false)}}
-                className={`hidden z-10 ${toggleDropdown ? "md:block" : "md:hidden"} w-[250px] absolute left-0 top-12 bg-white text-black rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden`}>
+                className={`hidden z-10 ${toggleDropdown ? "md:block" : "md:hidden"} w-[250px] absolute left-0 top-9 bg-white text-black rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden`}>
                 <ul>
                     {!userStatus && <Link to="/signup">
                     <li className="w-full py-3 px-3 border-b-[1px] flex justify-between">

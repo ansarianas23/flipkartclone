@@ -62,7 +62,7 @@ function Login() {
 
     
   return (
-    <div className="w-fit h-fit">
+    <div className="w-full h-full">
       {/* Toast Container */}
       <ToastContainer 
       position="bottom-center"
@@ -76,9 +76,9 @@ function Login() {
       pauseOnHover
       theme="light"/>
 
-      <div className="flex w-[845px] h-[535px] bg-white">
+      <div className="flex flex-col md:flex-row w-full h-full bg-white">
         {/* left div */}
-        <div className="w-[40%] h-full bg-flipkart-blue py-10 px-8">
+        <div className="w-full md:w-[40%] h-fit md:h-full bg-flipkart-blue py-5 md:py-10 px-8">
           <div className="flex flex-col text-white space-y-4">
             <h2 className="text-[28px] font-medium">Login</h2>
             <p className="text-lg font-normal">Get access to your Orders, Wishlist and Recommendations</p>
@@ -86,7 +86,7 @@ function Login() {
         </div>
 
         {/*Otp send right div */}
-        {!uID && <div className="flex flex-col justify-between px-10 pt-16 pb-10 h-full w-[60%]">
+        {!uID && <div className="flex flex-col md:justify-between px-5 md:px-10 pt-5 md:pt-16 pb-10 h-fit md:h-full w-full md:w-[60%]">
             <form className="flex flex-col space-y-6">
               <input
               onChange={(e)=>{setPhoneNo(e.target.value)}} 
@@ -104,14 +104,14 @@ function Login() {
             </form>
 
             <Link to="/signup">
-              <p className="text-flipkart-blue font-medium text-sm text-center">New to Flipkart? Create an account</p>
+              <p className="text-flipkart-blue font-medium text-sm text-center mt-5 md:mt-auto">New to Flipkart? Create an account</p>
             </Link>
         </div>}
         
         {/*Otp verify right div */}
-        {uID && <div className="flex flex-col px-10 pt-16 pb-10 h-full w-[60%]">
-            <form className="flex flex-col space-y-10">
-              <span className="inline-block text-center px-20">Please enter the OTP sent to {phoneNo}. 
+        {uID && <div className="flex flex-col px-5 md:px-10 pt-5 md:pt-16 pb-10 h-fit md:h-full w-full md:w-[60%]">
+            <form className="flex flex-col space-y-4 md:space-y-10">
+              <span className="inline-block text-center md:px-20">Please enter the OTP sent to {phoneNo}. 
                 <span onClick={()=>{setUId('')}} className="text-flipkart-blue font-medium cursor-pointer"> Change</span>
               </span>
 
