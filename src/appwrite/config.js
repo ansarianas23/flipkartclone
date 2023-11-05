@@ -95,6 +95,23 @@ export class Service{
         }
     }
 
+
+    // To get Queried user details
+    async getProducts(queries = [Query.equal("category", "mobiles")]){
+        try {
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteProductsCollectionId,
+                queries,
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: getProducts :: error", error);
+            return false
+        }
+    }
+
+
+
     // file upload service
 
     async uploadFile(file){
