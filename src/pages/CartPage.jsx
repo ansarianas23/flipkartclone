@@ -3,10 +3,15 @@ import CartCard from "../components/CartCard"
 import CheckoutTotal from "../components/CheckoutTotal"
 import EmptyCartMessage from "../components/EmptyCartMessage";
 import PlaceOrderBtn from "../components/PlaceOrderBtn";
+import { useEffect } from "react";
 
 function CartPage() {
 
   const carts = useSelector(state => state.cart.carts)
+
+  useEffect(()=>{
+    window.scrollTo({ top:0, behavior: 'auto'})
+  },[])
 
   return (
     <div className='w-full h-fit py-5 px-2'>

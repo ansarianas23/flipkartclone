@@ -2,8 +2,14 @@ import CategoriesBar from '../components/CategoriesBar'
 import BannerImageSlider from '../components/BannerImageSlider'
 import ProductSlider from '../components/ProductSlider'
 import AdBanner from '../components/AdBanner'
+import { useEffect } from 'react'
 
 function HomePage() {
+
+  useEffect(()=>{
+    window.scrollTo({ top:0, behavior: 'auto'})
+  },[])
+
   return (
     <>
       {/* width container */}

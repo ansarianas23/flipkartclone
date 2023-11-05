@@ -37,11 +37,6 @@ function ProductPage() {
             });
         }, 200);
 
-        setTimeout(()=>{
-          let num = carts?.includes(matchedProduct,0);
-          console.log(num)
-        },1000)
-
     }
 
     const handleBuyNow = ()=>{
