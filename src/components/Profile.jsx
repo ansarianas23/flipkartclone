@@ -31,9 +31,9 @@ function Profile() {
 
 
   return (
-    <div className="w-full h-full flex space-x-4">
+    <div className="w-full h-full flex lg:flex-row flex-col space-y-4 lg:space-x-4">
       {/* left column */}
-      <div className="flex flex-col space-y-4 w-[25%]">
+      <div className="flex flex-col space-y-4 w-full lg:w-[25%]">
         {/* left 1st div */}
         <div className="flex items-center p-3 space-x-3 shadow-sm w-full bg-white">
           <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/profile-pic-male_4811a1.svg" alt="" />
@@ -89,7 +89,7 @@ function Profile() {
           </div>
 
 
-          <div onClick={logoutHandler} className="flex items-center px-3 py-5 space-x-5">
+          <div onClick={logoutHandler} className="flex items-center p-5 space-x-5">
             <span className="text-xl text-flipkart-blue"><FaPowerOff /></span>
             <span className="text-gray-500 font-medium hover:text-flipkart-blue cursor-pointer">Logout</span>
           </div>
@@ -107,17 +107,16 @@ function Profile() {
 
       </div>
 
-      {/* right info container */}
-      <div className="w-[75%] flex flex-col space-y-10 shadow-md bg-white py-5 px-7 relative">
+      {/* RIGHT INFO CONTAINER */}
+      <div className="w-full lg:w-[75%] flex flex-col space-y-10 shadow-md bg-white py-5 px-7 relative">
 
-        {/* infos div */}
-        {/* name */}
+        {/* Personal Information */}
         <div className="flex flex-col space-y-5">
           <div className="flex items-center space-x-3">
             <span className="font-medium text-lg">Personal Information</span>
             <span className="text-flipkart-blue cursor-pointer font-medium text-sm">Edit</span>
           </div>
-          <form className="flex space-x-3">
+          <form className="flex flex-wrap space-y-4 lg:space-y-0 lg:space-x-3">
             <input readOnly className="w-[250px] text-sm outline-none bg-gray-50 border-[1px] border-gray-300 p-3 hover:cursor-not-allowed text-gray-500" value={firstName} type="text" />
             <input readOnly className="w-[250px] text-sm outline-none bg-gray-50 border-[1px] border-gray-300 p-3 hover:cursor-not-allowed text-gray-500" value={lastName} type="text" />
           </form>
