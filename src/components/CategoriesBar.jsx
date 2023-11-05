@@ -51,10 +51,10 @@ function CategoriesBar() {
   ];
 
   return (
-    <div className=" h-full flex overflow-x-auto py-4 scrollbar-hide">
+    <div className=" h-full w-fit flex overflow-x-scroll py-4 px-4 scrollbar-hide space-x-12">
       {categories.map((item) => (
-        <div key={item.title} className="flex flex-col items-center px-5 hover:cursor-pointer">
-          <img className="max-w-[70px] max-h-[70px]" src={item.imgSrc} alt="logo" />
+        <div key={item.title} className="w-fit h-fit flex flex-col items-center hover:cursor-pointer">
+          <img className=" max-w-[70px] max-h-[70px]" src={item.imgSrc} alt="logo" />
           <h3 className="text-center font-medium text-sm mt-3">{item.title}</h3>
         </div>
       ))}

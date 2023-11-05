@@ -54,7 +54,7 @@ function ProductPage() {
     },[])
 
   return (
-    <div className='flex flex-col lg:flex-row space-y-3 lg:space-y-0 justify-between mx-auto p-4 mt-1 mb-3 bg-white   w-[72vw] h-fit'> 
+    <div className='max-w-[1377px] h-fit flex flex-col lg:justify-between lg:flex-row space-y-3 lg:space-y-0 mx-auto p-4 mt-1 mb-3 bg-white'> 
 
     {/* Toast Container */}
     <ToastContainer 
@@ -70,16 +70,17 @@ function ProductPage() {
       theme="light"/>
 
       {/* left image Box */}
-      <div className='flex flex-col lg:sticky top-20 w-[40vw] lg:w-[30vw] h-fit'>
+      <div className='max-w-full md:w-[450px] h-full flex flex-col lg:sticky top-20'>
         <div className='border-[1px] w-full h-fit py-5 flex justify-center items-center'>
             <img className='object-contain w-[70%] h-auto' src={matchedProduct.imageUrl} alt="productImage" />
         </div>
+        {/* Button div */}
         <div className='w-full flex justify-between text-white mt-3'>
-            <button onClick={handleAddtoCart} className='flex justify-center items-center uppercase font-semibold bg-flipkart-yellow py-4 rounded-sm shadow-md w-[49%]'>
-                <BiSolidCart className='mr-1'/> Add to cart
+            <button onClick={handleAddtoCart} className='flex justify-center items-center uppercase font-semibold bg-flipkart-yellow rounded-sm shadow-md w-[150px] md:w-[200px] py-3 md:py-4'>
+                <BiSolidCart className='mr-1 text-sm md:text-base'/> Add to cart
             </button>
-            <button onClick={handleBuyNow} className='flex justify-center items-center uppercase font-semibold bg-flipkart-orange py-4 rounded-sm shadow-md w-[49%]'>
-               <MdFlashOn className='mr-1'/> Buy Now
+            <button onClick={handleBuyNow} className='flex justify-center items-center uppercase font-semibold bg-flipkart-orange rounded-sm shadow-md w-[150px] md:w-[200px] py-3 md:py-4'>
+               <MdFlashOn className='mr-1 text-sm md:text-base'/> Buy Now
             </button>
         </div>
       </div>
@@ -157,7 +158,7 @@ function ProductPage() {
         </div>
 
         {/* description */}
-        <div className='flex w-full h-fit mt-5'>
+        <div className='flex w-full h-fit mt-5 pr-5'>
           <span className='text-gray-400 text-sm font-medium pr-20'>Description</span>
           <p className='text-sm'>{matchedProduct.desc}</p>
         </div>
