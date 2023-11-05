@@ -1,5 +1,5 @@
 # Flipkart Clone
-Demo Live At https://flipkartclonesite.netlify.app/https://flipkartclonesite.netlify.app/
+Demo Live At https://flipkartclonesite.netlify.app
 
 Features
 Login via phone number
