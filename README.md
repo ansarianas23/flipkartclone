@@ -1,8 +1,11 @@
-# React + Vite
+# Flipkart Clone
+Demo Live At https://flipkartclonesite.netlify.app/https://flipkartclonesite.netlify.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Login via phone number
+Sign Up via phone number
+Add/remove item in cart
 
-Currently, two official plugins are available:
+Screenshots
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![fkclone](https://github.com/ansarianas23/flipkartclone/assets/111463267/93a14fc9-0e12-4990-bba7-3f13cb8ec126)
