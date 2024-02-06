@@ -46,9 +46,9 @@ export class AuthService {
     }
 
     // Service to login by OTP
-    async loginByOtp({uID, Otp}){
+    async loginByOtp({uID, combinedOTP}){
         try {
-            return await this.account.updatePhoneSession(uID, Otp)  // both param should be string and when passes variable name also should be same
+            return await this.account.updatePhoneSession(uID, combinedOTP)  // both param should be string and when passes variable name also should be same
         } catch (error) {
             console.log("Appwrite service :: loginByOtp ::", error)
         }

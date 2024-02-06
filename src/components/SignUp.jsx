@@ -59,7 +59,7 @@ function SignUp() {
   };
 
   return (
-    <div className="flex justify-center w-full ">
+    <div className="w-full h-full">
 
       {/* Toast Container */}
       <ToastContainer 
@@ -74,16 +74,9 @@ function SignUp() {
       pauseOnHover
       theme="light"/>
 
-      <div className="flex w-[845px] h-[535px] bg-white">
-        {/* <form className="flex flex-col space-y-4">
-          <input onChange={(e)=>{setPhoneNo(e.target.value)}} className="p-1 outline-none" type="text" placeholder="Phone"/>
-          <input onChange={(e)=>{setOtp(e.target.value)}} className="p-1 outline-none" type="text" placeholder="otp"/>
-          <button onClick={handleOTP} className="bg-blue-400 text-white w-fit mx-auto p-2">Request OTP</button>
-          <button onClick={handleLogin} className="bg-blue-400 text-white w-fit mx-auto p-2">Login</button>
-        </form> */}
-
+      <div className="flex flex-col md:flex-row w-full h-full bg-white">
         {/* left div */}
-        <div className="w-[40%] h-full bg-flipkart-blue py-10 px-8">
+        <div className="w-full md:w-[40%] h-fit md:h-full bg-flipkart-blue py-5 md:py-10 px-8">
           <div className="flex flex-col text-white space-y-4">
             <h2 className="text-[28px] font-medium">Looks like you're new here!</h2>
             <p className="text-lg font-normal">Sign up with your mobile number to get started</p>
@@ -91,7 +84,7 @@ function SignUp() {
         </div>
 
         {/* right div */}
-        <div className="flex flex-col px-10 pt-16 pb-10 h-full w-[60%]">
+        <div className="flex flex-col md:justify-between px-5 md:px-10 pt-5 md:pt-16 pb-10 h-fit md:h-full w-full md:w-[60%]">
             <form className="flex flex-col space-y-4">
               <input 
               className="outline-none border-b-[1px] border-gray-300 py-2 focus:border-flipkart-btn-blue transition-all ease-out" 

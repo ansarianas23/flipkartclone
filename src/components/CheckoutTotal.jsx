@@ -4,7 +4,7 @@ import { AiFillSafetyCertificate } from "react-icons/ai";
 function CheckoutTotal() {
 
 const carts = useSelector(state => state.cart.carts)
-console.log(carts);
+// console.log(carts);
 
 let totalPrice = carts?.reduce((tot, item)=>{
   return tot + item.price

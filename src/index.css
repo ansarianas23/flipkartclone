@@ -44,3 +44,10 @@ body{
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
+
+.bgAd{
+    background-image: url("https://rukminim2.flixcart.com/www/530/740/promos/26/09/2023/6c3c5fe2-c236-4fa2-8d97-595e1e01da01.jpg?q=80");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

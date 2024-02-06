@@ -9,8 +9,10 @@ function SignUpPage() {
   },[])
 
   return (
-    <div className='w-full flex h-fit justify-center pt-5'>
-      <SignUp/>
+    <div className='w-full flex h-fit justify-center py-5'>
+      <div className='max-w-[850px] h-fit md:h-[535px] mx-5'>
+        <SignUp/>
+      </div>
     </div>
   )
 }

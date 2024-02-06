@@ -1,17 +1,21 @@
 import { useDispatch } from 'react-redux'
 import cameraImg from '../assets/camera.jpg'
-import { removeItem } from '../features/cartSlice'
+import { removeItem, updateCart } from '../features/cartSlice'
 import { useState } from 'react'
+import appwriteService from '../appwrite/config'
 
 function CartCard({id, title, desc, price, mrp, imageUrl, specification, seller}) {
 
   const dispatch = useDispatch()
   const [quantity, setQuantity] = useState(1);
 
-  console.log("specs is" ,specification)
+
+  // console.log("specs is" ,specification)
 
   const rItem = () =>{
-    dispatch(removeItem(id))
+    // dispatch(removeItem(id))
+    appwriteService.deleteCartProduct(id);
+    dispatch(updateCart());
   }
 
   return (
@@ -28,8 +32,8 @@ function CartCard({id, title, desc, price, mrp, imageUrl, specification, seller}
           {/* quntity selector */}
           <div className='flex items-center space-x-2'>
             <button className='w-8 h-8 rounded-full border-gray-300 border-[1px] text-center'>-</button>
-            <div className='w-[45px] h-[30px] border-gray-400 border-[1px]'>
-              <input type="number" className='w-full h-full outline-none text-center' value={quantity}/>
+            <div className='w-[45px] h-[30px] border-gray-300 border-[1px]'>
+              <input type="text" className='w-full h-full outline-none text-center' value={quantity}/>
             </div>
             <button className='w-8 h-8 rounded-full border-gray-300 border-[1px] text-center'>+</button>
           </div>

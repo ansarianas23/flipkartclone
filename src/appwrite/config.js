@@ -67,13 +67,67 @@ export class Service{
         }
     }
 
+    // create cart product
+    async createCartProduct({id, title, desc, price, mrp, imageUrl, category, specification, seller, userId }){
+        try {
+            return await this.databases.createDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteUserCartCollectionId,
+                ID.unique(),
+                {
+                    id:id,   
+                    title:title,
+                    desc:desc,
+                    price:price,
+                    mrp:mrp,
+                    imageUrl:imageUrl,
+                    category:category,
+                    specification:specification,
+                    seller:seller,
+                    userId:userId,
+                }
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: createCartProduct :: error", error);
+        }
+    }
+
+    // delete single cart product
+    async deleteCartProduct(slug){
+        try {
+            await this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteUserCartCollectionId,
+                slug
+            )
+            return true
+        } catch (error) {
+            console.log("Appwrite serive :: deleteCartProduct :: error", error);
+            return false
+        }
+    }
+
+    // get cart products
+    async getCartProducts(queries){
+        try {
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteUserCartCollectionId,
+                queries,
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: getProducts :: error", error);
+            return false
+        }
+    }
+
     // To get Single product
-    async getProduct(slug){
+    async getProduct(id){
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
-                conf.appwriteCollectionId,
-                slug
+                conf.appwriteUserCartCollectionId,
+                id
             )
         } catch (error) {
             console.log("Appwrite serive :: getProduct :: error", error);

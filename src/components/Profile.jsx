@@ -14,7 +14,7 @@ function Profile() {
     const userData = useSelector(state => state.auth.userData)
     const [firstName, setFirstName] = useState('Ansari');
     const [lastName, setLastName] = useState('Anas');
-    const [email, setEmail] = useState('ansariii.5130@gmail.comas');
+    const [email, setEmail] = useState('ansariii.5130@gmail.com');
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -155,7 +155,7 @@ function Profile() {
             <span className="text-flipkart-blue cursor-pointer font-medium text-sm">Edit</span>
           </div>
           <form>
-            <input readOnly className="w-[250px] text-sm outline-none bg-gray-50 border-[1px] border-gray-300 p-3 hover:cursor-not-allowed text-gray-500" value={userData.phone} type="text" />
+            <input readOnly className="w-[250px] text-sm outline-none bg-gray-50 border-[1px] border-gray-300 p-3 hover:cursor-not-allowed text-gray-500" value={911234567890} type="text" />
           </form>
         </div>
 

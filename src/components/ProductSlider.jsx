@@ -33,7 +33,7 @@ function ProductSlider({title}) {
     }
 };
 
-  const products = useSelector(state => state.product.products)
+  const products = useSelector(state => state.product.products);
 
   return (
     <div className='w-full h-full py-5 px-6'>
@@ -64,6 +64,8 @@ function ProductSlider({title}) {
                 imageUrl={eachItem.imageUrl}
                 id={eachItem.id}
                 seller = {eachItem.seller}
+                height={"250px"}
+                width={"200px"}
                 />
                 ))}
         </Carousel>

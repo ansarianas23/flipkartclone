@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .env
 screenshots
+to be work on flipkart clone
 
 # Editor directories and files
 .vscode/*

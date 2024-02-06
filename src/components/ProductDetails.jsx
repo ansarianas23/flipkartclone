@@ -1,30 +1,52 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { BiSolidCart } from "react-icons/bi";
 import { MdFlashOn } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux'
-import { addTocart } from '../features/cartSlice'
+import { addTocart, updateCart } from '../features/cartSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useEffect } from 'react';
+import appwriteService from '../appwrite/config';
 
 function ProductPage() {
 
     const { id }  = useParams();
     const products = useSelector(state => state.product.products)
-    const matchedProduct = products.find((item)=> item.id == id )
+    const matchedProduct = products?.find((item)=> item.id == id )
     const parsedSpecs = JSON.parse(matchedProduct.specification[0])
     const carts = useSelector(state => state.cart.carts)
+    const userData = useSelector(state => state.auth.userData)
+
+    // console.log(userData);
+    // console.log("matchedProduct", matchedProduct);
     const navigate = useNavigate()
 
     const dispatch = useDispatch();
 
+    const location = useLocation();
+    const pathnames = location.pathname.split("/").filter((x)=>x);
+    let breadCrumbPath = ""
+
+    function isProductInCart(arr, obj) {
+      return arr.some(element => JSON.stringify(element) === JSON.stringify(obj));
+    }
+
+    console.log(":isProductInCart" ,isProductInCart(carts, matchedProduct));
 
 
     const handleAddtoCart = ()=>{
-        dispatch(addTocart(matchedProduct))
-        setTimeout(() => {
+        appwriteService.createCartProduct({...matchedProduct, userId: userData.$id})
+        .then((response)=>{
+          // console.log(response);
+        })
+        .catch((error)=>{
+          // console.log(error)
+        })
+        // dispatch(addTocart(matchedProduct))
+
+        const timerId = setTimeout(() => {
           toast.success('Item Added To Cart', {
             position: "bottom-center",
             autoClose: 3000,
@@ -35,7 +57,13 @@ function ProductPage() {
             progress: undefined,
             theme: "light",
             });
-        }, 200);
+          }, 200);
+          
+          
+          clearTimeout(timerId);
+          
+          dispatch(updateCart());
+        console.log("Add to cart clicked")
 
     }
 
@@ -82,6 +110,24 @@ function ProductPage() {
 
       {/* Right Info Div */}
       <div className='w-full lg:w-[65%] space-y-4 lg:ml-5'>
+
+        {/* BreadCrumbs */}
+        <div className='flex space-x-2 text-sm text-gray-400'>
+          <span className='hover:text-flipkart-blue cursor-pointer'><Link to="/">Home</Link></span>
+          {
+            pathnames?.map((name, index)=>{
+              breadCrumbPath += `/${name}`
+
+              // check whether index is last or not to make last last link not clickable
+              const isLast = index === pathnames.length-1;
+
+              return isLast? <span key={breadCrumbPath}>/ {name}</span>: (
+                <span key={breadCrumbPath} className='hover:text-flipkart-blue cursor-pointer'><Link to={breadCrumbPath}>/{name}</Link></span>
+              )
+            })
+          }
+        </div>
+
         <div className=''>
           <p className='text-xl'>{matchedProduct.title}</p>
         </div>
