@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AdminLogin from '../components/AdminLogin'
 import AddProductPanel from '../components/AddProductPanel'
 
-const Adminpage = () => {
+const AdminPage = () => {
 
 const [isAdminLoggedIn, setIsAdminLoggedIn] = useState("access-denied")
 
@@ -19,4 +19,4 @@ const [isAdminLoggedIn, setIsAdminLoggedIn] = useState("access-denied")
   )
 }
 
-export default Adminpage
+export default AdminPage
