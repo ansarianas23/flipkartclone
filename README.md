@@ -19,6 +19,23 @@ Upcoming Features
 - Different Category Product
 - and much more
 
+Tech Stack
+- HTML
+- CSS
+- JavsScript
+- React JS
+- Redux-Tool-Kit
+- Tailwind CSS
+- Vite Bundler
+- Appwrite Backend
+
+Libraries Used
+- React currency formatter for formatting current into INR  @https://www.npmjs.com/package/react-currency-formatter
+- React Responsive Carousel  @https://www.npmjs.com/package/react-responsive-carousel
+- React icons @https://www.npmjs.com/package/react-icons
+- React uuid for generating unique ids @https://www.npmjs.com/package/react-uuid
+- react-toastify to show popup toast like container @https://www.npmjs.com/package/react-toastify
+
   
 Screenshots
 
