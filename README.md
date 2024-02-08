@@ -11,7 +11,7 @@ Features
 - Admin Panel to add products in database (CRUD Operation)
 - Theme changes based on route changes
   
-Upcoming Features
+# Upcoming Features
 - Product wishList
 - Payment Gateway Any(RazorPay, Paytm etc)
 - order page
@@ -19,7 +19,7 @@ Upcoming Features
 - Different Category Product
 - and much more
 
-Tech Stack
+# Tech Stack
 - HTML
 - CSS
 - JavsScript
@@ -29,7 +29,7 @@ Tech Stack
 - Vite Bundler
 - Appwrite Backend
 
-Libraries Used
+# Libraries Used
 - React currency formatter for formatting current into INR  @https://www.npmjs.com/package/react-currency-formatter
 - React Responsive Carousel  @https://www.npmjs.com/package/react-responsive-carousel
 - React icons @https://www.npmjs.com/package/react-icons
@@ -37,7 +37,7 @@ Libraries Used
 - react-toastify to show popup toast like container @https://www.npmjs.com/package/react-toastify
 
   
-Screenshots
+# Screenshots
 
 1. Home Page
 
