@@ -14,7 +14,9 @@ import ProfilePage from './pages/ProfilePage'
 import OrdersPage from './pages/OrdersPage'
 import WishListPage from './pages/WishListPage'
 import CategoryProductsPages from './pages/CategoryProductsPages'
-import AdminPage from './pages/Adminpage'
+import AdminPage from './pages/AdminPage'
+
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
