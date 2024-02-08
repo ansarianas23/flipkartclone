@@ -17,6 +17,7 @@ import { PiUserCircleLight } from "react-icons/pi";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { BsTag } from "react-icons/bs";
 import { VscBell } from "react-icons/vsc";
+import { RiAdminLine } from "react-icons/ri";
 
 function Header() {
   const carts = useSelector((state) => state.cart.carts);
@@ -183,6 +184,13 @@ function Header() {
                         <span>Notofocations</span>
                     </li>}
 
+                    {userStatus && <Link to="/admin">
+                      <li className="px-4 py-[10px] cursor-pointer hover:bg-gray-100 text-sm flex items-center">
+                          <span className="mr-2 text-lg"><RiAdminLine /></span>
+                          <span>Admin Panel</span>
+                      </li>
+                    </Link>}
+
                     {userStatus && (
                     <li
                         onClick={logoutHandler}
@@ -198,8 +206,8 @@ function Header() {
             {/* cart */}
               <Link to="/cart">  
               <div className={`flex space-x-2 
-              ${pathname == "/login" || pathname == "/profile" || pathname == "/signup" || pathname == `/productdetails/${paramId.id}` ? "text-white font-semibold" : "text-black"}
-              ${pathname == "/cart" && "hidden"}`}>
+              ${pathname == "/cart" && "hidden"}
+              ${pathname !== "/home" && pathname !== "/" ? "text-white font-semibold" : "text-black"}`}>
                 
                 <div className="flex items-center relative">
                     <BsCart3 className="text-2xl md:text-xl" />
@@ -216,7 +224,7 @@ function Header() {
             {/* Become a seller */}
               <div className={`w-fit h-fit space-x-2 flex items-center cursor-pointer 
               ${pathname == "/cart" && "hidden"} 
-              ${pathname == "/login" || pathname == "/profile" || pathname == "/signup" || pathname == `/productdetails/${paramId.id}` ? "text-white font-semibold" : "text-black"}`}>
+              ${pathname !=="/home" && pathname!=="/" ? "text-white font-semibold" : "text-black"} `}>
                   <AiOutlineShop className="text-2xl text-inherit"/>
                   <div className="hidden xl:block">Become a Seller</div>
               </div>

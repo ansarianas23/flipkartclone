@@ -174,23 +174,26 @@ function Login() {
                 <span onClick={()=>{setUId('')}} className="text-flipkart-blue font-medium cursor-pointer"> Change</span>
               </span>
 
-              <form className="flex space-x-2 mx-auto">
-                {
-                  Otp.map((value, index)=>{
-                    return <input
-                    key={index} 
-                    className="h-8 w-8 outline-none border-b-[1.5px] text-center border-gray-300 font-semibold text-2xl focus:border-flipkart-blue" 
-                    type="text"
-                    value={value}
-                    ref={(input)=> OTPinputRefs.current[index] = input}
-                    onChange={(e)=>handleChange(index, e)} 
-                    onClick={(e)=>handleClick(index)}
-                    onKeyDown={(e)=>handleKeyDown(index, e)}
-                    />
-                  })
-                }
+              <form className="flex flex-col gap-8">
+                <div className="flex space-x-2 mx-auto">
+                  {
+                    Otp.map((value, index)=>{
+                      return <input
+                      key={index} 
+                      className="h-8 w-8 outline-none border-b-[1.5px] text-center border-gray-300 font-semibold text-2xl focus:border-flipkart-blue" 
+                      type="text"
+                      value={value}
+                      ref={(input)=> OTPinputRefs.current[index] = input}
+                      onChange={(e)=>handleChange(index, e)} 
+                      onClick={(e)=>handleClick(index)}
+                      onKeyDown={(e)=>handleKeyDown(index, e)}
+                      />
+                    })
+                  }
+                </div>
+                
+                <button onClick={handleLogin} className="text-white w-fit bg-flipkart-blue font-medium w-full py-3 rounded-sm shadow-md">Verify</button>
               </form>
-              <button onClick={handleLogin} className="text-white bg-flipkart-blue font-medium w-full py-3 rounded-sm shadow-md">Verify</button>
             </div>
 
               <p className="text-gray-400 text-sm text-center pt-6">Not received your code? 

@@ -1,52 +1,58 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import { useState } from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import { useEffect } from "react";
 
 function Slider() {
+
+  const [currentImage, setCurrentImage] = useState(0); 
+
+
+  const nextImage = () => {
+    setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prevImage) => (prevImage - 1 + images.length) % images.length);
+  };
+
+  const images = [
+    "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/0c706f11307528da.jpg?q=20",
+    "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/e8afba7feffa58f9.jpg?q=20",
+    "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/7fd0e4ab26429926.jpg?q=20",
+    "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/a10d78bd3ae5316b.jpg?q=20",
+    "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/352e6f0f8034fab5.jpg?q=20"
+  ]
+
+
+  useEffect(()=>{
+    const intervalTimer = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+    }, 2500);
+
+    return()=>{
+      clearInterval(intervalTimer);
+    }
+  })
+
   return (
-    <div className="w-full h-full">
-      <Carousel
-        autoPlay={true}
-        infiniteLoop={true}
-        showArrows={true}
-        showIndicators={true}
-        showThumbs={false}
-        interval={3000}
-      >
-        <div>
+    <div className="flex w-full overflow-hidden relative bg-green-300">
+      {/* Image container */}
+      <div className="w-full h-fit flex transition-transform ease-in-out duration-300 transform -translate-x-full bg-green-400" style={{ transform: `translateX(${-currentImage * 100}%)` }}>
+        {images.map((image, index) => (
           <img
-            loading="lazy"
-            src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/6e0a9c81fc82ce85.png?q=20"
-            alt="bannerImg"/>
-        </div>
+            key={index}
+            src={image}
+            alt={`Slide ${index + 1}`}
+            className="w-full h-[150px] md:h-full"/>
+        ))}
+      </div>
 
-        <div>
-          <img
-            loading="lazy"
-            src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/f7120be1e8d98812.jpg?q=20"
-            alt="bannerImg"/>
-        </div>
+      {/* Slider button container */}
+      <div className='w-full h-fit flex justify-between absolute left-0 top-[50%] translate-y-[-50%]'>
+        <span onClick={prevImage} className='bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-[2px] py-3 sm:px-1 sm:py-5 lg:px-3 lg:py-9 rounded-r-sm cursor-pointer'><FaAngleLeft /></span>
+        <span onClick={nextImage} className='bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-[2px] py-3 sm:px-1 sm:py-5 lg:px-3 lg:py-9 rounded-l-sm cursor-pointer'><FaAngleRight /></span>
+      </div>
 
-        <div>
-          <img
-            loading="lazy"
-            src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/1881ab9b1221de4d.jpeg?q=20"
-            alt="bannerImg"/>
-        </div>
-
-        <div>
-          <img
-            loading="lazy"
-            src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/1e05c74a01f71a51.jpg?q=20"
-            alt="bannerImg"/>
-        </div>
-
-        <div>
-          <img
-            loading="lazy"
-            src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/eceea0652b4a0227.jpeg?q=20"
-            alt="bannerImg"/>
-        </div>
-      </Carousel>
     </div>
   );
 }

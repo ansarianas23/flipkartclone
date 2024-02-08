@@ -14,18 +14,20 @@ export class Service{
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId}){
+    async createProduct({title, desc, price, mrp, imageUrl, category, seller}){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
-                conf.appwriteCollectionId,
-                slug,
+                conf.appwriteProductsCollectionId,
+                ID.unique(),
                 {
                     title,
-                    content,
-                    featuredImage,
-                    status,
-                    userId,
+                    desc,
+                    price,
+                    mrp,
+                    imageUrl,
+                    category,
+                    seller,
                 }
             )
         } catch (error) {
@@ -136,7 +138,7 @@ export class Service{
     }
 
     // To get Queried product
-    async getProducts(queries = [Query.equal("category", "mobiles")]){
+    async getProducts(queries){
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,

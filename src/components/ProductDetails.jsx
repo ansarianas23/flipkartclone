@@ -14,8 +14,8 @@ function ProductPage() {
 
     const { id }  = useParams();
     const products = useSelector(state => state.product.products)
-    const matchedProduct = products?.find((item)=> item.id == id )
-    const parsedSpecs = JSON.parse(matchedProduct.specification[0])
+    const matchedProduct = products?.find((item)=> item.$id === id )
+    // const parsedSpecs = JSON.parse(matchedProduct?.specification[0])
     const carts = useSelector(state => state.cart.carts)
     const userData = useSelector(state => state.auth.userData)
 
@@ -33,7 +33,7 @@ function ProductPage() {
       return arr.some(element => JSON.stringify(element) === JSON.stringify(obj));
     }
 
-    console.log(":isProductInCart" ,isProductInCart(carts, matchedProduct));
+    // console.log(":isProductInCart" ,isProductInCart(carts, matchedProduct));
 
 
     const handleAddtoCart = ()=>{
@@ -95,7 +95,7 @@ function ProductPage() {
       {/* left image Box */}
       <div className='max-w-full md:w-[450px] h-full flex flex-col lg:sticky top-20'>
         <div className='border-[1px] w-full h-fit py-5 flex justify-center items-center'>
-            <img className='object-contain w-[70%] h-auto' src={matchedProduct.imageUrl} alt="productImage" />
+            <img className='object-contain w-[70%] h-auto' src={matchedProduct?.imageUrl} alt="productImage" />
         </div>
         {/* Button div */}
         <div className='w-full flex justify-between text-white mt-3'>
@@ -129,7 +129,7 @@ function ProductPage() {
         </div>
 
         <div className=''>
-          <p className='text-xl'>{matchedProduct.title}</p>
+          <p className='text-xl'>{matchedProduct?.title}</p>
         </div>
 
         {/* Rating */}
@@ -149,14 +149,14 @@ function ProductPage() {
         </div>
 
         <div>
-          <span className='text-sm font-medium text-flipkart-green'>Extra {matchedProduct.mrp -matchedProduct.price} off</span>
+          <span className='text-sm font-medium text-flipkart-green'>Extra {matchedProduct?.mrp -matchedProduct?.price} off</span>
         </div>
 
         {/* Price */}
         <div className='flex items-center space-x-3'>
-            <div className=' font-semibold text-2xl'>₹{matchedProduct.price}</div>
-            <div className=' text-gray-400 text-sm line-through'>₹{matchedProduct.mrp}</div>
-            <div className='text-sm font-semibold text-flipkart-green'>{100 - Math.ceil((matchedProduct.price/matchedProduct.mrp) * 100)}% off</div>
+            <div className=' font-semibold text-2xl'>₹{matchedProduct?.price}</div>
+            <div className=' text-gray-400 text-sm line-through'>₹{matchedProduct?.mrp}</div>
+            <div className='text-sm font-semibold text-flipkart-green'>{100 - Math.ceil((matchedProduct?.price/matchedProduct?.mrp) * 100)}% off</div>
         </div>
 
         <div className='text-sm'>+ ₹49 Secured Packaging Fee</div>
@@ -165,11 +165,11 @@ function ProductPage() {
         <div className='flex h-auto mt-5'>
             <span className='text-gray-400 text-sm font-medium pr-20'>Highlights</span>
             <ul className='marker:text-color list-inside list-disc text-gray-300 [&>li>p]:inline [&>li>p]:text-black text-sm space-y-3'>
-                <li><p>{parsedSpecs.ram}</p></li>
-                <li><p>{parsedSpecs.display}</p></li>
-                <li><p>{parsedSpecs.camera}</p></li>
-                <li><p>{parsedSpecs.battery}</p></li>
-                <li><p>{parsedSpecs.processor}</p></li>
+                {/* <li><p>{parsedSpecs?.ram}</p></li>
+                <li><p>{parsedSpecs?.display}</p></li>
+                <li><p>{parsedSpecs?.camera}</p></li>
+                <li><p>{parsedSpecs?.battery}</p></li>
+                <li><p>{parsedSpecs?.processor}</p></li> */}
             </ul>
         </div>
 
@@ -188,7 +188,7 @@ function ProductPage() {
         <div className='flex h-auto mt-5'>
             <span className='text-gray-400 text-sm font-medium pr-20'>Seller</span>
               <ul className='marker:text-color list-inside list-disc text-gray-300 [&>li>p]:inline [&>li>p]:text-black text-sm space-y-3'>
-                  <div className='text-sm pl-5 font-medium text-flipkart-blue'>{matchedProduct.seller}</div>
+                  <div className='text-sm pl-5 font-medium text-flipkart-blue'>{matchedProduct?.seller}</div>
                   <li><p>7 Days Service Center Replacement/Repair</p></li>
                   <li><p>GST invoice available</p></li>
               </ul>
@@ -201,7 +201,7 @@ function ProductPage() {
         {/* description */}
         <div className='flex w-full h-fit mt-5 pr-5'>
           <span className='text-gray-400 text-sm font-medium pr-20'>Description</span>
-          <p className='text-sm'>{matchedProduct.desc}</p>
+          <p className='text-sm'>{matchedProduct?.desc}</p>
         </div>
 
       </div>

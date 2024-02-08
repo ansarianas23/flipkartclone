@@ -45,6 +45,15 @@ body{
     display: none;
 }
 
+/* to add red mandetory star in form */
+.mandatory::after{
+    content: "*";
+    color: red;
+    margin-left: 2px;
+
+}
+
+
 .bgAd{
     background-image: url("https://rukminim2.flixcart.com/www/530/740/promos/26/09/2023/6c3c5fe2-c236-4fa2-8d97-595e1e01da01.jpg?q=80");
     background-position: center;
