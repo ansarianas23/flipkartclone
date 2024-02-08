@@ -5,7 +5,21 @@ Features
 - Login via phone number
 - Sign Up via phone number
 - Add/remove item in cart
+- Cloud Based User specific cart
+- Flipkart like OTP input aumatically focus moves to next field
+- Automatic moving Image Slider
+- Admin Panel to add products in database (CRUD Operation)
+- Theme changes based on route changes
+  
+Upcoming Features
+- Product wishList
+- Payment Gateway Any(RazorPay, Paytm etc)
+- order page
+- Product Sort Feature
+- Different Category Product
+- and much more
 
+  
 Screenshots
 
 1. Home Page
