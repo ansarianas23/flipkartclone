@@ -17,9 +17,9 @@ function App() {
 
   // console.log("updateCartStatus", updateCartStatus);
 
-  // to load product from databsae
+  // to load category based product from databsae
   useEffect(()=>{
-    appwriteService.getProducts().then((product) => {
+    appwriteService.getProducts([Query.equal("category", "mobiles")]).then((product) => {
       if(product){
         dispatch(addProductToStore(product.documents))
       }
