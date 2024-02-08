@@ -76,10 +76,10 @@ function SignUp() {
 
       <div className="flex flex-col md:flex-row w-full h-full bg-white">
         {/* left div */}
-        <div className="w-full md:w-[40%] h-fit md:h-full bg-flipkart-blue py-5 md:py-10 px-8">
-          <div className="flex flex-col text-white space-y-4">
-            <h2 className="text-[28px] font-medium">Looks like you're new here!</h2>
-            <p className="text-lg font-normal">Sign up with your mobile number to get started</p>
+        <div className="w-full md:w-[40%] h-fit md:h-full bg-flipkart-blue py-3 md:py-10 px-4 md:px-8">
+          <div className="flex flex-col text-white space-y-2 md:space-y-4">
+            <h2 className="text-2xl md:text-[28px] font-medium">Looks like you're new here!</h2>
+            <p className="md:text-lg font-normal">Sign up with your mobile number to get started</p>
           </div>
         </div>
 

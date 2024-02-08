@@ -45,8 +45,6 @@ function CartPage() {
             </div>
         </div>}
 
-        
-
         {/* Checkout total container */}
         {<div className="w-full lg:w-[30%] h-fit sticky top-20">
           {carts?.length >= 1 && <CheckoutTotal/>}
@@ -56,14 +54,14 @@ function CartPage() {
 
       {/* empty cart message container */}
       {carts?.length === 0 &&
-      <div className="w-[78rem] mx-auto">
+      <div className="max-w-[78rem] mx-auto">
          <EmptyCartMessage/>
       </div>}
 
       {/* privacy policy Container*/}
-      <div className="w-full flex justify-between border-t-[1px] text-sm text-gray-600 py-8 mt-10">
+      <div className="w-full flex flex-wrap space-y-3 md:space-y-0 md:space-x-3 justify-between border-t-[1px] text-sm text-gray-600 py-8 mt-10">
         <span>Policies: <span className="cursor-pointer">Returns Policy</span> | <span className="cursor-pointer">Terms of use</span> | <span className="cursor-pointer">Security</span> | <span className="cursor-pointer">Privacy</span> | <span className="cursor-pointer">Infringement</span> | ©2024 Flipkart Clone</span>
-        ${pathname == "/cart" || pathname=="/" && "flex-row"}
+        {pathname == "/cart" || pathname=="/" && "flex-row"}
         <span>Need help? Visit the <span className="text-flipkart-blue cursor-pointer">Help Center</span> or <span className="text-flipkart-blue cursor-pointer">Contact Us</span></span>
       </div>
     </div>

@@ -8,8 +8,8 @@ function LoginPage() {
   },[])
 
   return (
-    <div className='w-full h-fit flex justify-center py-5'>
-      <div className='max-w-[850px] h-[400px] md:h-[535px] mx-5'>
+    <div className='w-full h-fit flex justify-center'>
+      <div className='max-w-[850px] h-fit md:h-[535px] py-3 mx-1'>
         <Login/>
       </div>
     </div>

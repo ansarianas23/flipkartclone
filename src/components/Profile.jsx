@@ -31,7 +31,7 @@ function Profile() {
 
 
   return (
-    <div className="w-full h-full flex lg:flex-row flex-col space-y-4 lg:space-x-4">
+    <div className="w-full h-full flex lg:flex-row flex-col space-y-4 md:space-y-0 lg:space-x-4">
       {/* left column */}
       <div className="flex flex-col space-y-4 w-full lg:w-[25%]">
         {/* left 1st div */}

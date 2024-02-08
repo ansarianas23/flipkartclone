@@ -63,7 +63,7 @@ function ProductPage() {
           clearTimeout(timerId);
           
           dispatch(updateCart());
-        console.log("Add to cart clicked")
+        // console.log("Add to cart clicked")
 
     }
 

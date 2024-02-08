@@ -134,14 +134,14 @@ function Login() {
       pauseOnHover
       theme="light"/>
 
-      <div className="flex flex-col md:flex-row w-full h-full bg-white">
+      <div className="flex flex-col md:flex-row w-full h-full bg-white overflow-hidden rounded-sm">
         {/* left div */}
-        <div className="flex flex-col items-center justify-between w-full md:w-[40%] h-fit md:h-full bg-flipkart-blue py-5 md:py-10 px-8">
-          <div className="flex flex-col text-white space-y-4">
-            <h2 className="text-[28px] font-medium">Login</h2>
-            <p className="text-lg font-normal">Get access to your Orders, Wishlist and Recommendations</p>
+        <div className="flex flex-col items-center justify-between w-full md:w-[40%] h-fit md:h-full bg-flipkart-blue py-3 md:py-10 px-4 md:px-8">
+          <div className="flex flex-col text-white space-y-2 md:space-y-4">
+            <h2 className="text-2xl md:text-[28px] font-medium">Login</h2>
+            <p className="md:text-lg font-normal">Get access to your Orders, Wishlist and Recommendations</p>
           </div>
-          <img src="https://www.bingocycles.com/images/login_img.png" alt="" />
+          <img className="w-36 md:w-auto mt-3 md:mt-0" src="https://www.bingocycles.com/images/login_img.png" alt="" />
         </div>
 
         {/*Otp send right div */}

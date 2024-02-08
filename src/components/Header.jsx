@@ -18,6 +18,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { BsTag } from "react-icons/bs";
 import { VscBell } from "react-icons/vsc";
 import { RiAdminLine } from "react-icons/ri";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 function Header() {
   const carts = useSelector((state) => state.cart.carts);
@@ -60,12 +61,15 @@ function Header() {
   // console.log("params,", paramId?.id);
 
   return (
-      <div className={`${pathname== "/home" || pathname== "/"? "w-full" : "max-w-[78rem] mx-auto"} w-full grid md:flex justify-between md:justify-normal items-center grid-col-4 px-2 md:px-7 py-3 gap-y-3 relative`}>
+      <div className={`${pathname== "/home" || pathname== "/"? "w-full" : "max-w-[78rem] mx-auto"} w-full grid grid-col-4 md:flex justify-between md:justify-normal items-center md:px-7 py-3 gap-y-3 relative`}>
         
         {/* left part main Logo */}
-        <div className="col-span-3 md:col-span-1 order-1 mr-7">
+        <div className="flex items-center col-span-3 md:col-span-1 order-1 md:mr-7">
+            {pathname == "/home" || pathname == "/" ? <span className="md:hidden text-2xl"><RxHamburgerMenu /></span> : ""}
+
             <Link to="/home">
-            { pathname == "/home" || pathname=="/" ? <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg" alt="" />
+            {/* { pathname == "/home" || pathname=="/" ? <img className="w-auto h-10 bg-green-500" src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg" alt="" /> */}
+            { pathname == "/home" || pathname=="/" ? <img className="w-auto h-6 md:h-8 ml-3 md:ml-0" src="https://seeklogo.com/images/F/flipkart-logo-5CE68C24AF-seeklogo.com.png" alt="" />
             :
              <div className="flex flex-col">
               <img className="w-20" src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png" alt="" />
@@ -76,10 +80,11 @@ function Header() {
               </div>
              </div>}
             </Link>
+
         </div>
 
         {/* Middle search bar */}
-        <div className={`w-full flex items-center relative col-span-4 md:col-span-3 order-3 md:order-2 row-span-1 ${pathname == "/home" || pathname=="/" ? "h-[40px] md:max-w-[54%] rounded-lg bg-blue-50" : "max-w-[48%] bg-white shadow-md h-[35px]"} relative`}>
+        <div className={`w-full flex items-center relative col-span-4 md:col-span-3 order-3 md:order-2 row-span-1 ${pathname == "/home" || pathname=="/" ? "h-[40px] md:max-w-[54%] rounded-lg bg-blue-50" : "max-w-full md:max-w-[48%] bg-white shadow-md h-[35px]"} relative`}>
 
           <button onClick={handleSubmitOnClick} className={`h-full w-fit px-2 bg-transparent cursor-pointer ${pathname == "/home" || pathname=="/" ? "order-first": "order-last"}`}>
             <AiOutlineSearch className="text-gray-500 text-2xl font-bold" />
@@ -95,10 +100,10 @@ function Header() {
 
           
           {/* search Results */}
-          {searchText.length> 0 && <div className="w-full h-fit absolute top-10 bg-white rounded-md overflow-hidden z-10">
+          {searchText.length> 0 && <div className="w-full min-h-fit max-h-[300px] overflow-y-scroll absolute top-10 bg-white rounded-md overflow-hidden z-10">
             <ul>
               {
-                filteredProductList.map((listItem)=> <Link to={`/productdetails/${listItem.id}`}><li onClick={()=>{setSearchText("")}} key={listItem.id} className="py-2 px-3 hover:bg-blue-50 cursor-pointer flex items-center"><AiOutlineSearch className="text-gray-500 text-xl mr-2" />{listItem.title}</li></Link>)
+                filteredProductList.map((listItem)=> <Link key={listItem?.$id} to={`/productdetails/${listItem?.$id}`}><li onClick={()=>{setSearchText("")}} key={listItem.id} className="py-2 px-3 hover:bg-blue-50 cursor-pointer flex items-center"><AiOutlineSearch className="text-gray-500 text-xl mr-2" />{listItem.title}</li></Link>)
               }
             </ul>
           </div>}
@@ -106,25 +111,29 @@ function Header() {
         </div>
 
         {/* Right part */}
-        <div className={`flex items-center w-fit h-fit gap-1 col-span-1 order-2 md:order-3 space-x-9 md:ml-5 
+        <div className={`flex items-center w-fit h-fit gap-1 col-span-1 order-2 md:order-3 space-x-5 md:space-x-9 md:ml-5 
         ${pathname == "/home" || pathname=="/" && "flex-row"}
         ${pathname == "/cart" && "flex-row-reverse flex-grow"}`}>
             {/* login button */}
             <div onMouseEnter={() => setToggleDropdown(!toggleDropdown)}
+                onClick={() => setToggleDropdown(!toggleDropdown)}
                 onMouseLeave={() => setToggleDropdown(false)}
-                className={"flex items-center md:hover:text-black rounded-md text-white relative"}>
+                className={`flex items-center md:hover:text-black rounded-md text-white relative ${pathname !== "/login" && pathname!== "/signup" && pathname!=="/profile" ? "block" : "hidden"}`}>
+                
+                {/* Acoount or login Button Link */}
+                <Link to={userStatus? '/profile' :"/login"}>
+                  <div className={`w-fit h-fit flex items-center ${pathname == "/home" || pathname=="/" ?"text-black hover:bg-blue-600 hover:text-white md:space-x-2 p-2 rounded-md": "text-flipkart-btn-blue bg-white font-medium py-1 px-10 shadow-md"}`}>
+                    <PiUserCircleLight className={`text-3xl md:text-2xl top-10 ${pathname == "/home" || pathname=="/" ? "block" : "hidden"}`}/>
 
-                <div className={`w-fit h-fit flex items-center ${pathname == "/home" || pathname=="/" ?"text-black hover:bg-blue-600 hover:text-white md:space-x-2 p-2 rounded-md": "text-flipkart-btn-blue bg-white font-medium py-1 px-10 shadow-md"}`}>
-                  <PiUserCircleLight className={`text-3xl md:text-2xl top-10 ${pathname == "/home" || pathname=="/" ? "block" : "hidden"}`}/>
-
-                  <span className={`hidden lg:inline-block ${pathname == "/home" || pathname=="/" ? "font-normal" : "font-semibold"}`}><Link to={userStatus? '/profile' :"/login"}>{userStatus ? "Account" : "Login"}</Link></span>
-                  
-                  <MdKeyboardArrowDown className={`${toggleDropdown? "rotate-180 transition-all ease-in-out" : ""} ${pathname == "/home" || pathname=="/" ? "block" : "hidden"}`}/>
-                </div>
+                    <span className={`lg:inline-block ${pathname == "/home" || pathname=="/" ? "font-normal hidden" : "font-semibold"}`}>{userStatus ? "Account" : "Login"}</span>
+                    
+                    <MdKeyboardArrowDown className={`${toggleDropdown? "rotate-180 transition-all ease-in-out" : ""} ${pathname == "/home" || pathname=="/" ? "hidden md:block" : "hidden"}`}/>
+                  </div>
+                </Link>
 
                 {/*Account Login dropdown */}
                 <div onMouseLeave={() => {setToggleDropdown(false)}}
-                className={`hidden z-10 ${toggleDropdown ? "md:block" : "md:hidden"} w-[200px] absolute left-0 top-10 bg-white text-black rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden ${pathname == "/home" || pathname=="/" ? "top-10" : "top-[33px]"}`}>
+                className={`z-10 ${toggleDropdown ? "block" : "hidden"} w-[200px] absolute right-0 md:left-0 top-10 bg-white text-black rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden ${pathname == "/home" || pathname=="/" ? "top-10" : "top-[33px]"}`}>
                 <ul>
                     {!userStatus && <Link to="/signup">
                     <li className="w-full py-3 px-3 border-b-[1px] flex justify-between">
@@ -222,11 +231,11 @@ function Header() {
               </Link>
 
             {/* Become a seller */}
-              <div className={`w-fit h-fit space-x-2 flex items-center cursor-pointer 
+              <div className={`hidden xl:flex w-fit h-fit space-x-2 items-center cursor-pointer 
               ${pathname == "/cart" && "hidden"} 
               ${pathname !=="/home" && pathname!=="/" ? "text-white font-semibold" : "text-black"} `}>
                   <AiOutlineShop className="text-2xl text-inherit"/>
-                  <div className="hidden xl:block">Become a Seller</div>
+                  <div className="">Become a Seller</div>
               </div>
             
             {/* other dropdown */}

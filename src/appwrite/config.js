@@ -70,14 +70,13 @@ export class Service{
     }
 
     // create cart product
-    async createCartProduct({id, title, desc, price, mrp, imageUrl, category, specification, seller, userId }){
+    async createCartProduct({title, desc, price, mrp, imageUrl, category, specification, seller, userId }){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteUserCartCollectionId,
                 ID.unique(),
-                {
-                    id:id,   
+                {  
                     title:title,
                     desc:desc,
                     price:price,

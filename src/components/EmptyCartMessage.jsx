@@ -13,7 +13,7 @@ function EmptyCartMessage() {
           src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
           alt=""/>
         <h3 className="text-lg">Your Cart is empty!</h3>
-        <p className="text-xs">Explore our wide selection and find something you like</p>
+        <p className="text-xs text-center px-1">Explore our wide selection and find something you like</p>
       </div> 
       :
       <div className="bg-white w-full h-fit py-10 flex flex-col items-center shadow-md space-y-4">

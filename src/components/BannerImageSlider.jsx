@@ -35,7 +35,7 @@ function Slider() {
   })
 
   return (
-    <div className="flex w-full overflow-hidden relative bg-green-300">
+    <div className="flex w-full overflow-hidden relative">
       {/* Image container */}
       <div className="w-full h-fit flex transition-transform ease-in-out duration-300 transform -translate-x-full bg-green-400" style={{ transform: `translateX(${-currentImage * 100}%)` }}>
         {images.map((image, index) => (
