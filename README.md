@@ -2,9 +2,9 @@
 Demo Live At https://flipkartclonesite.netlify.app
 
 Features
-Login via phone number
-Sign Up via phone number
-Add/remove item in cart
+- Login via phone number
+- Sign Up via phone number
+- Add/remove item in cart
 
 Screenshots
 
