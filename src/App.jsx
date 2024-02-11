@@ -4,16 +4,11 @@ import authService from './appwrite/auth'
 import appwriteService from './appwrite/config'
 import {login, logout} from './features/authslice'
 import { addProductToStore } from './features/productSlice'
-import { addTocart, clearCart } from './features/cartSlice'
 import { Query } from 'appwrite'
 
 function App() {
 
   const dispatch = useDispatch();
-  const userStatus = useSelector(state => state.auth.status)
-  const userData = useSelector(state => state.auth.userData)
-  const carts = useSelector(state => state.cart.carts);
-  const updateCartStatus = useSelector(state => state.cart.updateCart);
 
   // console.log("updateCartStatus", updateCartStatus);
 
@@ -35,23 +30,6 @@ function App() {
       }
     })
   },[])
-
-   // to load database based cart
-   useEffect(()=>{
-    if(userStatus){
-      appwriteService.getCartProducts([Query.equal("userId", userData.$id)])
-      .then((product)=>{
-        if(product){
-          // console.log(product)
-          dispatch(addTocart(product.documents));
-        }
-      })
-    }else if(!userStatus){
-      dispatch(clearCart())
-    }
-
-    // console.log("App.js useeffct runs")
-  },[userStatus, updateCartStatus]);
 
   return (
     <>

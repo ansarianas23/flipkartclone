@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import conf from '../config/conf';
 
 const AdminLogin = ({ setIsAdminLoggedIn}) => {
 
@@ -8,7 +9,7 @@ const AdminLogin = ({ setIsAdminLoggedIn}) => {
 
   const handleLoginAdmin = (e)=>{
     e.preventDefault()
-    if(email === import.meta.env.VITE_ADMIN_EMAIL && password === import.meta.env.VITE_ADMIN_PASSWORD){
+    if(email == conf.adminLoginEmail && password == conf.adminLoginPassword){
       setIsAdminLoggedIn("access-granted");
       setErorr("");
     }

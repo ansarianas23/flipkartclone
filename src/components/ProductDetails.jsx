@@ -37,7 +37,7 @@ function ProductPage() {
 
 
     const handleAddtoCart = ()=>{
-        appwriteService.createCartProduct({...matchedProduct, userId: userData.$id})
+        appwriteService.createCartProduct({...matchedProduct, userId: userData?.$id})
         .then((response)=>{
           // console.log(response);
         })

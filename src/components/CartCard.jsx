@@ -33,7 +33,7 @@ function CartCard({id, title, desc, price, mrp, imageUrl, specification, seller}
           <div className='flex items-center space-x-2'>
             <button className='w-8 h-8 rounded-full border-gray-300 border-[1px] text-center'>-</button>
             <div className='w-[45px] h-[30px] border-gray-300 border-[1px]'>
-              <input type="text" className='w-full h-full outline-none text-center' value={quantity}/>
+              <input type="text" className='w-full h-full outline-none text-center' defaultValue={quantity}/>
             </div>
             <button className='w-8 h-8 rounded-full border-gray-300 border-[1px] text-center'>+</button>
           </div>

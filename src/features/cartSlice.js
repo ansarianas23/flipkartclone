@@ -19,7 +19,7 @@ const cartSlice = createSlice({
             //     imageUrl: action.payload.imageUrl,
             //     seller: action.payload.seller
             // }
-            state.carts.push(...action.payload)
+            state.carts.push(...action.payload);
         },
 
         clearCart: (state)=>{
