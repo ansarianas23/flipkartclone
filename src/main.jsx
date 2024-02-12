@@ -7,22 +7,24 @@ import store from './store/store'
 import App from './App'
 import HomePage from './pages/HomePage'
 import { CartPage, LoginPage, SignUpPage, ProfilePage, OrdersPage, WishListPage, ProductDetails, CategoryProductsPages, AdminPage} from './pages/Lazy'
+import LoadingSpinner from './components/LoadingSpinner'
+import { Suspense } from 'react'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
-      <Route path='/' element={<HomePage/>}/>
-      <Route path='/home' element={<HomePage/>}/>
-      <Route path='/cart' element={<CartPage/>}/>
-      <Route path='/login' element={<LoginPage/>}/>
-      <Route path='/signup' element={<SignUpPage/>}/>
-      <Route path='/profile' element={<ProfilePage/>}/>
-      <Route path='/orders' element={<OrdersPage/>}/>
-      <Route path='/wishlist' element={<WishListPage/>}/>
-      <Route path='/productdetails/:id' element={<ProductDetails/>}/>
-      <Route path='/category/:category' element={<CategoryProductsPages/>}/>
-      <Route path='/admin' element={<AdminPage/>}/>
+    <Route path='/' element={<Suspense fallback={<LoadingSpinner/>}><Layout /></Suspense>}>
+      <Route path='/' element={<Suspense fallback={<LoadingSpinner/>}><HomePage/></Suspense>}/>
+      <Route path='/home' element={<Suspense fallback={<LoadingSpinner/>}><HomePage/></Suspense>}/>
+      <Route path='/cart' element={<Suspense fallback={<LoadingSpinner/>}><CartPage/></Suspense>}/>
+      <Route path='/login' element={<Suspense fallback={<LoadingSpinner/>}><LoginPage/></Suspense>}/>
+      <Route path='/signup' element={<Suspense fallback={<LoadingSpinner/>}><SignUpPage/></Suspense>}/>
+      <Route path='/profile' element={<Suspense fallback={<LoadingSpinner/>}><ProfilePage/></Suspense>}/>
+      <Route path='/orders' element={<Suspense fallback={<LoadingSpinner/>}><OrdersPage/></Suspense>}/>
+      <Route path='/wishlist' element={<Suspense fallback={<LoadingSpinner/>}><WishListPage/></Suspense>}/>
+      <Route path='/productdetails/:id' element={<Suspense fallback={<LoadingSpinner/>}><ProductDetails/></Suspense>}/>
+      <Route path='/category/:category' element={<Suspense fallback={<LoadingSpinner/>}><CategoryProductsPages/></Suspense>}/>
+      <Route path='/admin' element={<Suspense fallback={<LoadingSpinner/>}><AdminPage/></Suspense>}/>
     </Route>
   )
 )

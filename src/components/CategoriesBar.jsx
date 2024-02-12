@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { categoriesList } from "../utils/categryList";
+import LoadingSpinner from "./LoadingSpinner";
 
 
 function CategoriesBar() {

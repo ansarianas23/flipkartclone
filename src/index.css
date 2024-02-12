@@ -68,6 +68,7 @@ body{
     background-size: 1000px 100%;
   }
   
+  /* Shimmer UI Waving Animation */
   @keyframes shimmer {
     from {
       background-position: -1000px 0;
@@ -75,5 +76,19 @@ body{
   
     to {
       background-position: 1000px 0;
+    }
+  }
+
+  
+  .spinner{
+    animation: spinLoader 1s linear infinite;
+  }
+
+  @keyframes spinLoader{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
     }
   }
