@@ -1,46 +1,21 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import CartCard from "../components/CartCard"
 import CheckoutTotal from "../components/CheckoutTotal"
 import EmptyCartMessage from "../components/EmptyCartMessage";
 import PlaceOrderBtn from "../components/PlaceOrderBtn";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import appwriteService from "../appwrite/config";
-import { addTocart, clearCart } from "../features/cartSlice";
-import { Query } from "appwrite";
 
 function CartPage() {
 
   const carts = useSelector(state => state.cart.carts);
-  const userStatus = useSelector(state => state.auth.status)
-  const userData = useSelector(state => state.auth.userData)
-  const updateCartStatus = useSelector(state => state.cart.updateCart);
 
-  const dispatch = useDispatch();
+  useEffect(()=>{
+    window.scrollTo({ top:0, behavior: 'auto'})
+  })
 
   const location = useLocation();
   const { pathname } = location;
-
-  // to load database based cart
-  useEffect(()=>{
-    if(userStatus){
-      appwriteService.getCartProducts([Query.equal("userId", userData.$id)])
-      .then((product)=>{
-        if(product){
-          // console.log(product)
-          dispatch(addTocart(product?.documents));
-        }
-      })
-    }else if(!userStatus){
-      dispatch(clearCart())
-    }
-
-    // console.log("App.js useeffct runs")
-  },[userStatus, updateCartStatus]);
-  
-  useEffect(()=>{
-    window.scrollTo({ top:0, behavior: 'auto'})
-  },[]);
 
   return (
     <div className='w-full min-h-[93.8vh] py-5 px-2'>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import ProductCard from './ProductCard';
+import ProductCard, { ProductCardShimmerUI } from './ProductCard';
 
 const ProductsBox = ({ title }) => {
 
@@ -24,6 +24,10 @@ const ProductsBox = ({ title }) => {
             />
         })}
       </div>
+
+      {products.length == 0 && <div className='flex justify-center flex-wrap gap-3'>
+        {Array(4).fill("").map?.((product, idx)=><ProductCardShimmerUI key={idx}/>)}
+      </div>}
     </div>
   )
 }

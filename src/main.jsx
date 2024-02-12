@@ -5,17 +5,8 @@ import Layout from './components/Layout'
 import { Provider } from 'react-redux'
 import store from './store/store'
 import App from './App'
-import ProductDetails from './components/ProductDetails'
 import HomePage from './pages/HomePage'
-import CartPage from './pages/CartPage'
-import LoginPage from './pages/LoginPage'
-import SignUpPage from './pages/SignUpPage'
-import ProfilePage from './pages/ProfilePage'
-import OrdersPage from './pages/OrdersPage'
-import WishListPage from './pages/WishListPage'
-import CategoryProductsPages from './pages/CategoryProductsPages'
-import AdminPage from './pages/AdminPage'
-
+import { CartPage, LoginPage, SignUpPage, ProfilePage, OrdersPage, WishListPage, ProductDetails, CategoryProductsPages, AdminPage} from './pages/Lazy'
 
 
 const router = createBrowserRouter(

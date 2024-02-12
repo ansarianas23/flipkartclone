@@ -60,3 +60,20 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.shimmer-effect {
+    animation: shimmer 3s;
+    animation-iteration-count: infinite;
+    background: linear-gradient(to right, #eef0f5 5%, #cccccc 25%, #eef0f5 35%);
+    background-size: 1000px 100%;
+  }
+  
+  @keyframes shimmer {
+    from {
+      background-position: -1000px 0;
+    }
+  
+    to {
+      background-position: 1000px 0;
+    }
+  }

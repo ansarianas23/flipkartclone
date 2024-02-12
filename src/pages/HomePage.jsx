@@ -5,6 +5,7 @@ import AdBanner from '../components/AdBanner'
 import { useEffect } from 'react'
 import ProductsBox from '../components/ProductsBox'
 import BoxAdBanner from '../components/BoxAdBanner'
+import BigAdBanner from '../components/BigAdBanner'
 
 function HomePage() {
 
@@ -45,11 +46,17 @@ function HomePage() {
         {/* Products Box 1 with 4 products */}
         <div className="grid grid-cols-12 gap-4 w-full h-fit mb-2 md:mb-4 z-10 order-5" >
           <ProductsBox title = "End of Season Best Sellers"/>
+          <BigAdBanner AdUrl={"https://rukminim1.flixcart.com/www/1070/660/promos/26/09/2023/ed27f892-1bc6-462f-805b-953f5add4f6a.jpg?q=80"}/>
+        </div>
+
+        {/* Products Box 2 with 4 products */}
+        <div className="grid grid-cols-12 gap-4 w-full h-fit mb-2 md:mb-4 z-10 order-5" >
+          <ProductsBox title = "End of Season Best Sellers"/>
           <ProductsBox title = "End of Season Best Sellers"/>
           <ProductsBox title = "End of Season Best Sellers"/>
         </div>
 
-        {/* Products Box 2 with 4 products */}
+        {/* Products Box 3 with 4 products ad banner */}
         <div className="grid grid-cols-12 gap-4  w-full h-fit mb-2 md:mb-4 z-10 order-6" >
           <ProductsBox title = "Newly Added products"/>
           <BoxAdBanner AdimageUrl="https://rukminim2.flixcart.com/www/530/740/promos/26/09/2023/6c3c5fe2-c236-4fa2-8d97-595e1e01da01.jpg?q=80"/>

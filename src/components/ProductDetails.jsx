@@ -39,7 +39,8 @@ function ProductPage() {
     const handleAddtoCart = ()=>{
         appwriteService.createCartProduct({...matchedProduct, userId: userData?.$id})
         .then((response)=>{
-          // console.log(response);
+          // console.log("response from addtocart databse", response);
+          dispatch(addTocart(response));
         })
         .catch((error)=>{
           // console.log(error)

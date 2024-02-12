@@ -4,7 +4,7 @@ function ProductCard({title, desc, price, mrp, id, imageUrl, height="250px", wid
 
   return (
     <Link to={`/productdetails/${id}`}>
-      <div className={`flex flex-col items-center justify-between w-[150px] md:w-[200px] h-[200px] md:h-[250px] border-[1px] rounded-sm cursor-pointer py-2`}>
+      <div className={`w-[150px] h-[200px] md:w-[200px] md:h-[250px] flex flex-col items-center justify-between border-[1px] rounded-sm cursor-pointer py-2`}>
         <div className='w-[80%] h-[80%] rounded-md overflow-hidden hover:scale-105 ease-in-out delay-75'>
           <img className='w-full h-auto' src={imageUrl} alt="" />
         </div>
@@ -19,3 +19,20 @@ function ProductCard({title, desc, price, mrp, id, imageUrl, height="250px", wid
 }
 
 export default ProductCard
+
+
+
+// Shimmer UI Card Component
+export const ProductCardShimmerUI = () => {
+  return (
+    <div className={`min-w-[150px] h-[200px] md:min-w-[200px] md:h-[250px] flex flex-col items-center justify-between border-[1px] rounded-sm cursor-pointer py-2 `}>
+      <div className='w-[80%] h-[80%] rounded-md overflow-hidden hover:scale-105 ease-in-out delay-75 bg-gray-200 shimmer-effect'></div>
+
+      <div className='mt-3 flex flex-col items-center space-y-2'>
+        <div className='w-28 h-3 bg-gray-200 shimmer-effect'></div>
+        <div className='w-20 h-3 bg-gray-200 shimmer-effect'></div>
+      </div>
+    </div>
+  )
+}
+

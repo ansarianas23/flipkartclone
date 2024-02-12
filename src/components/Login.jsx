@@ -9,33 +9,58 @@ import 'react-toastify/dist/ReactToastify.css'
 
 function Login() {
     let OTPLength = 6;
+    const resendTimer = 15;
     const [error, setError] = useState("");
     const [phoneNo, setPhoneNo] = useState('');
     const [Otp, setOtp] = useState(Array(OTPLength).fill(""));
     const [uID, setUId] = useState('');
     const OTPinputRefs = useRef([]);
+    const NumberInputRef = useRef();
+    const [isFocused, setIsFocused] = useState(false);
+    const [seconds, setSeconds] = useState(resendTimer);
+    const [timerActive, setTimerActive] = useState(false);  
 
     const combinedOTP = String(Otp.join(""));
 
     // console.log("otp length", Otp)
+    console.log("seconds", seconds);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleOTPSend = async (e)=>{
-        e.preventDefault();
-        try {
-          const userSessionToken = await authService.getLoginOtp(phoneNo)
-        if(userSessionToken){
-          const userID = userSessionToken.userId
-          if(userID){
-            setUId(userID)
+    // Function To set interval time for next otp attempt
+    const OTPInterval = ()=>{
+      const intervalId = setInterval(() => {
+        setSeconds(prevSeconds => {
+          if(prevSeconds==0){
+            clearInterval(intervalId);
+            setTimerActive(false);
           }
+          return prevSeconds - 1;
+        });
+      }, 1000);
+  
+      return () => clearInterval(intervalId);
+     }
+
+    const handleOTPSend = async (e)=>{
+      e.preventDefault();
+
+      OTPInterval();
+      
+      try {
+        const userSessionToken = await authService.getLoginOtp(phoneNo)
+      if(userSessionToken){
+        const userID = userSessionToken.userId
+        if(userID){
+          setUId(userID)
         }
-        } catch (error) {
-          setError(error.message)
-        }
+      }
+      } catch (error) {
+        setError(error.message)
+      }
     }
+
 
     const handleLogin = async (e) =>{
       e.preventDefault();
@@ -113,10 +138,14 @@ function Login() {
      }
    }
 
+
    useEffect(()=>{
     if(uID){
       OTPinputRefs.current[0].focus();
     }
+
+    !uID && NumberInputRef.current.focus();
+
   },[uID]);
 
   return (
@@ -147,11 +176,18 @@ function Login() {
         {/*Otp send right div */}
         {!uID && <div className="flex flex-col md:justify-between px-5 md:px-10 pt-5 md:pt-16 pb-10 h-fit md:h-full w-full md:w-[60%]">
             <form className="flex flex-col space-y-6">
-              <input
-              onChange={(e)=>{setPhoneNo(e.target.value)}} 
-              className="outline-none border-b-[1px] border-gray-300 py-2 focus:border-flipkart-btn-blue transition-all ease-out" 
-              type="text" 
-              placeholder="Enter Email/Mobile Number"/>
+              <div className="w-full relative">
+                <label htmlFor="number" className={`${isFocused ? "absolute -top-2 text-xs" : "absolute top-[50%] translate-y-[-50%]"} transition-all ease-in-out text-gray-400 hover:cursor-text`}>Enter Email/Mobile Number</label>
+                <input
+                onFocus={()=>{setIsFocused(true)}}
+                onBlur={()=>{phoneNo ? "" : setIsFocused(false)}}
+                ref={NumberInputRef}
+                id="number"
+                onChange={(e)=>{setPhoneNo(e.target.value)}} 
+                className="w-full outline-none border-b-[1px] border-gray-300 pb-1 pt-1 mt-2 focus:border-flipkart-btn-blue transition-all ease-out z-10" 
+                type="text" 
+                />
+              </div>
 
               <span className="text-xs text-gray-400">By continuing, you agree to Flipkart's  
                 <span className="text-flipkart-blue cursor-pointer"> Terms of Use </span>
@@ -159,7 +195,7 @@ function Login() {
                 <span className="text-flipkart-blue cursor-pointer"> Privacy Policy.</span>
               </span>
 
-              <button disabled={phoneNo.length == 0? true : false} onClick={handleOTPSend} className="text-white bg-flipkart-orange font-medium w-full py-3 rounded-sm">Request OTP</button>
+              <button disabled={phoneNo ? false : true} onClick={handleOTPSend} className={`${phoneNo ? "bg-flipkart-orange" : "bg-orange-300"} text-white bg-flipkart-orange font-medium w-full py-3 rounded-sm`}>Request OTP</button>
             </form>
 
             <Link to="/signup">
@@ -192,13 +228,15 @@ function Login() {
                   }
                 </div>
                 
-                <button onClick={handleLogin} className="text-white w-fit bg-flipkart-blue font-medium w-full py-3 rounded-sm shadow-md">Verify</button>
+                <button onClick={handleLogin} className="text-white w-full bg-flipkart-blue font-medium py-3 rounded-sm shadow-md">Verify</button>
               </form>
             </div>
 
-              <p className="text-gray-400 text-sm text-center pt-6">Not received your code? 
-                <span onClick={handleOTPSend} className="text-flipkart-blue font-medium cursor-pointer"> Resend code</span>
-              </p>
+              <div className="text-gray-400 text-sm text-center pt-6">
+                <span>Not received your code?</span>
+                {<span onClick={handleOTPSend} className="text-flipkart-blue font-medium cursor-pointer">Resend code</span>}
+                {<span>{seconds}</span>}
+              </div>
         </div>}
       </div>
 

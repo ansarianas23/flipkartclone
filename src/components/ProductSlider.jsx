@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import ProductCard from './ProductCard'
+import ProductCard, { ProductCardShimmerUI } from './ProductCard'
 import { useSelector } from 'react-redux'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -53,7 +53,7 @@ function ProductSlider({title}) {
         <h1 className='text-lg md:text-xl font-semibold py-3 md:py-5'>{title}</h1>
 
         <div ref={sliderRef} className='w-full flex gap-2 md:gap-4 overflow-x-auto scrollbar-hide scroll-smooth'>
-          {products.map((eachItem) => (
+          {products?.slice(0, 8).map((eachItem) => (
             <ProductCard
             key={eachItem.title}
             title={eachItem.title}
@@ -68,6 +68,11 @@ function ProductSlider({title}) {
             />
             ))}
         </div>
+
+        {/* Shimmer Cards */}
+        {products.length == 0 && <div className='w-full flex gap-2 md:gap-4 overflow-x-scroll scrollbar-hide'>
+          {Array(10).fill("").map((shimmer, idx)=> <ProductCardShimmerUI key={idx}/>)}
+        </div>}
 
         {/* Slider Buttons */}
           <div className='w-full h-fit flex justify-between absolute left-0 top-[43%]'>
