@@ -93,6 +93,30 @@ export class Service{
         }
     }
 
+    // create cart product
+    async createWishListProduct({title, desc, price, mrp, imageUrl, category, specification, seller, userId }){
+        try {
+            return await this.databases.createDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteWishListCollectionId,
+                ID.unique(),
+                {  
+                    title:title,
+                    desc:desc,
+                    price:price,
+                    mrp:mrp,
+                    imageUrl:imageUrl,
+                    category:category,
+                    specification:specification,
+                    seller:seller,
+                    userId:userId,
+                }
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: createWishListProduct :: error", error);
+        }
+    }
+
     // delete single cart product
     async deleteCartProduct(slug){
         try {
@@ -108,7 +132,7 @@ export class Service{
         }
     }
 
-    // get cart products
+    // get all cart products user specific
     async getCartProducts(queries){
         try {
             return await this.databases.listDocuments(
@@ -118,6 +142,35 @@ export class Service{
             )
         } catch (error) {
             console.log("Appwrite serive :: getProducts :: error", error);
+            return false
+        }
+    }
+
+    // get all wishlist products user specific
+    async getWishListProducts(queries){
+        try {
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteWishListCollectionId,
+                queries,
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: getWishListProducts :: error", error);
+            return false
+        }
+    }
+
+    // delete single wish List product
+    async deleteSingleWishListProduct(slug){
+        try {
+            await this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteWishListCollectionId,
+                slug
+            )
+            return true
+        } catch (error) {
+            console.log("Appwrite serive :: deleteSingleWishListProduct :: error", error);
             return false
         }
     }

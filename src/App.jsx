@@ -36,14 +36,12 @@ function App() {
     })
   },[])
 
-   // to load database based cart
+   // to load database based cart user specific
    useEffect(()=>{
     if(userStatus){
-      // console.log("userStatus clg")
       appwriteService.getCartProducts([Query.equal("userId", userData.$id)])
       .then((product)=>{
         if(product){
-          // console.log(product)
           dispatch(addTocart(product.documents));
         }
       })

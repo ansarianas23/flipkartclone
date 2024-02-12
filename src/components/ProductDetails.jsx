@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { BiSolidCart } from "react-icons/bi";
 import { MdFlashOn } from "react-icons/md";
@@ -9,6 +9,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useEffect } from 'react';
 import appwriteService from '../appwrite/config';
+import BreadCrumbs from './BreadCrumbs';
+import { FaHeart } from "react-icons/fa";
 
 function ProductPage() {
 
@@ -18,6 +20,7 @@ function ProductPage() {
     // const parsedSpecs = JSON.parse(matchedProduct?.specification[0])
     const carts = useSelector(state => state.cart.carts)
     const userData = useSelector(state => state.auth.userData)
+    const [wishListed, setWishListed] = useState(false);
 
     // console.log(userData);
     // console.log("matchedProduct", matchedProduct);
@@ -27,11 +30,10 @@ function ProductPage() {
 
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x)=>x);
-    let breadCrumbPath = ""
 
-    function isProductInCart(arr, obj) {
-      return arr.some(element => JSON.stringify(element) === JSON.stringify(obj));
-    }
+    // function isProductInCart(arr, obj) {
+    //   return arr.some(element => JSON.stringify(element) === JSON.stringify(obj));
+    // }
 
     // console.log(":isProductInCart" ,isProductInCart(carts, matchedProduct));
 
@@ -41,6 +43,39 @@ function ProductPage() {
         .then((response)=>{
           // console.log("response from addtocart databse", response);
           dispatch(addTocart(response));
+        })
+        .catch((error)=>{
+          // console.log(error)
+        })
+        // dispatch(addTocart(matchedProduct))
+
+        const timerId = setTimeout(() => {
+          toast.success('Item Added To Cart', {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+          }, 200);
+          
+          
+          clearTimeout(timerId);
+          
+          dispatch(updateCart());
+        // console.log("Add to cart clicked")
+
+    }
+
+    const handleAddtoWishList = ()=>{
+        setWishListed(!wishListed);
+        appwriteService.createWishListProduct({...matchedProduct, userId: userData?.$id})
+        .then((response)=>{
+          // console.log("response from addtocart databse", response);
+          // dispatch(addTocart(response));
         })
         .catch((error)=>{
           // console.log(error)
@@ -78,7 +113,7 @@ function ProductPage() {
     },[])
 
   return (
-    <div className='max-w-[1377px] h-fit flex flex-col lg:justify-between lg:flex-row space-y-3 lg:space-y-0 mx-auto p-4 mt-1 mb-3 bg-white'> 
+    <div className='max-w-[1377px] h-fit flex flex-col lg:justify-between lg:flex-row space-y-3 lg:space-y-0 mx-auto pt-0 p-4 mt-1 mb-3 bg-white'> 
 
     {/* Toast Container */}
     <ToastContainer 
@@ -93,10 +128,17 @@ function ProductPage() {
       pauseOnHover
       theme="light"/>
 
+      {/* BreadCrumbs */}
+      <div className='lg:hidden'>
+        <BreadCrumbs pathnames={pathnames}/>
+      </div>
+
       {/* left image Box */}
       <div className='max-w-full md:w-[450px] h-full flex flex-col lg:sticky top-20'>
-        <div className='border-[1px] w-full h-fit py-5 flex justify-center items-center'>
+        <div className='border-[1px] w-full h-fit py-5 flex justify-center items-center relative'>
             <img className='object-contain w-[70%] h-auto' src={matchedProduct?.imageUrl} alt="productImage" />
+            {/* wishlist button */}
+            <span onClick={handleAddtoWishList} className={`${wishListed? "text-red-500" : "text-gray-500"} w-8 h-8 flex items-center justify-center cursor-pointer absolute top-3 right-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-full text-xs`}><FaHeart /></span>
         </div>
         {/* Button div */}
         <div className='w-full flex justify-between text-white mt-3'>
@@ -112,41 +154,22 @@ function ProductPage() {
       {/* Right Info Div */}
       <div className='w-full lg:w-[65%] space-y-4 lg:ml-5'>
 
-        {/* BreadCrumbs */}
-        <div className='flex space-x-2 text-sm text-gray-400'>
-          <span className='hover:text-flipkart-blue cursor-pointer'><Link to="/">Home</Link></span>
-          {
-            pathnames?.map((name, index)=>{
-              breadCrumbPath += `/${name}`
-
-              // check whether index is last or not to make last last link not clickable
-              const isLast = index === pathnames.length-1;
-
-              return isLast? <span key={breadCrumbPath}>/ {name}</span>: (
-                <span key={breadCrumbPath} className='hover:text-flipkart-blue cursor-pointer'><Link to={breadCrumbPath}>/{name}</Link></span>
-              )
-            })
-          }
+        <div className='hidden lg:block'>
+          {/* BreadCrumbs */}
+          <BreadCrumbs pathnames={pathnames}/>
         </div>
 
-        <div className=''>
-          <p className='text-xl'>{matchedProduct?.title}</p>
-        </div>
+        {/* Title */}
+        <p className='text-xl'>{matchedProduct?.title}</p>
 
         {/* Rating */}
         <div className='flex items-center space-x-3'>
-          <div className='bg-flipkart-green flex items-center w-fit rounded-sm px-1 py-[2px] space-x-1'>
+          <div className='bg-flipkart-green flex items-center w-fit rounded-[4px] px-1 py-[2px] space-x-1'>
             <span className='text-xs text-white font-medium'>4.2</span>
             <AiFillStar className='text-white text-xs'/>
           </div>
-
-          <div className=''>
             <span className='text-sm font-medium text-gray-400'>Ratings</span>
-          </div>
-
-          <div>
             <img className='w-auto h-[20px]' src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png" alt="fk-assured-logo" />
-          </div>
         </div>
 
         <div>

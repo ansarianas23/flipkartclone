@@ -27,7 +27,6 @@ function CartPage() {
             
             <CartCard
             key={cartItem.title}
-            // id={cartItem.id}
             id={cartItem.$id}
             title={cartItem.title}
             desc = {cartItem.desc}

@@ -37,13 +37,13 @@ function Slider() {
   return (
     <div className="flex w-full overflow-hidden relative">
       {/* Image container */}
-      <div className="w-full h-fit flex transition-transform ease-in-out duration-300 transform -translate-x-full bg-green-400" style={{ transform: `translateX(${-currentImage * 100}%)` }}>
+      <div className="w-full h-fit flex transition-transform ease-in-out duration-300 transform -translate-x-full" style={{ transform: `translateX(${-currentImage * 100}%)` }}>
         {images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Slide ${index + 1}`}
-            className="w-full h-[150px] md:h-full"/>
+            className="w-full h-[180px] md:h-full"/>
         ))}
       </div>
 

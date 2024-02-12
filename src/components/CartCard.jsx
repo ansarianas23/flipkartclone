@@ -12,7 +12,7 @@ function CartCard({id, title, desc, price, mrp, imageUrl, specification, seller}
 
   // console.log("specs is" ,specification)
 
-  const rItem = () =>{
+  const deleteCartItem = () =>{
     // dispatch(removeItem(id))
     appwriteService.deleteCartProduct(id);
     dispatch(updateCart());
@@ -57,7 +57,7 @@ function CartCard({id, title, desc, price, mrp, imageUrl, specification, seller}
 
           <div className='flex gap-5 font-semibold'>
             <div className='uppercase cursor-pointer hover:text-flipkart-blue'>Save for later</div>
-            <div onClick={rItem} className='uppercase cursor-pointer hover:text-flipkart-blue'>remove</div>
+            <div onClick={deleteCartItem} className='uppercase cursor-pointer hover:text-flipkart-blue'>remove</div>
           </div>
 
         </div>

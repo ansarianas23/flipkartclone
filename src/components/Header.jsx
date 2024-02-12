@@ -61,7 +61,7 @@ function Header() {
   // console.log("params,", paramId?.id);
 
   return (
-      <div className={`${pathname== "/home" || pathname== "/"? "w-full" : "max-w-[78rem] mx-auto"} w-full grid grid-col-4 md:flex justify-between md:justify-normal items-center md:px-7 py-3 gap-y-3 relative`}>
+      <div className={`${pathname== "/home" || pathname== "/"? "w-full" : "max-w-[78rem] mx-auto"} w-full grid grid-col-4 md:flex justify-between md:justify-normal items-center px-[9px] md:px-7 py-3 gap-y-3 relative`}>
         
         {/* left part main Logo */}
         <div className="flex items-center col-span-3 md:col-span-1 order-1 md:mr-7">
@@ -122,7 +122,7 @@ function Header() {
                 
                 {/* Acoount or login Button Link */}
                 <Link to={userStatus? '/profile' :"/login"}>
-                  <div className={`w-fit h-fit flex items-center ${pathname == "/home" || pathname=="/" ?"text-black hover:bg-blue-600 hover:text-white md:space-x-2 p-2 rounded-md": "text-flipkart-btn-blue bg-white font-medium py-1 px-10 shadow-md"}`}>
+                  <div className={`w-fit h-fit flex items-center ${pathname == "/home" || pathname=="/" ?"text-black hover:bg-blue-600 hover:text-white md:space-x-2 p-2 rounded-md": "text-flipkart-btn-blue bg-white font-medium py-1 px-2 md:px-10 shadow-md text-sm md:text-base"}`}>
                     <PiUserCircleLight className={`text-3xl md:text-2xl top-10 ${pathname == "/home" || pathname=="/" ? "block" : "hidden"}`}/>
 
                     <span className={`lg:inline-block ${pathname == "/home" || pathname=="/" ? "font-normal hidden" : "font-semibold"}`}>{userStatus ? "Account" : "Login"}</span>
@@ -166,7 +166,7 @@ function Header() {
                     </li>
                     </Link>
 
-                    <Link to="/wishlist">
+                    <Link to={userStatus ? "/wishlist" : "/login"}>
                     <li className="px-4 py-[10px] cursor-pointer hover:bg-gray-100 text-sm flex items-center">
                         <span className="mr-2 text-xl"><AiOutlineHeart /></span>
                         <span>Wishlist</span>
