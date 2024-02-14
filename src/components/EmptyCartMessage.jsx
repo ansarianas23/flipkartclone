@@ -7,7 +7,7 @@ function EmptyCartMessage() {
 
   return (
     <>
-      {userStatus ? <div className="bg-white w-full h-fit py-10 flex flex-col items-center">
+      {userStatus ? <div className="bg-white w-full h-fit py-10 flex flex-col shadow-md items-center">
         <img
           className="w-[200px] h-auto"
           src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
